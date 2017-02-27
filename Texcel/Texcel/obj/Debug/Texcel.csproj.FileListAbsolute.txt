@@ -1,1 +1,2 @@
 C:\Users\utilisateur\Desktop\Session 4\Programmation\Lab\Texcel\Texcel\bin\Debug\Texcel.exe.config
+C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\bin\Debug\Texcel.exe.config
