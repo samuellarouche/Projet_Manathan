@@ -16,5 +16,12 @@ namespace Texcel
         {
             InitializeComponent();
         }
+
+        private void btnConnecter_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmAdministrateur asd = new frmAdministrateur();
+            asd.Show();
+        }
     }
 }

@@ -1,2 +1,12 @@
 C:\Users\utilisateur\Desktop\Session 4\Programmation\Lab\Texcel\Texcel\bin\Debug\Texcel.exe.config
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\bin\Debug\Texcel.exe.config
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\bin\Debug\Texcel.exe.config
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\bin\Debug\Texcel.exe
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\bin\Debug\Texcel.pdb
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.csprojResolveAssemblyReference.cache
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmConnexion.resources
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.Properties.Resources.resources
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.csproj.GenerateResource.Cache
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.exe
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.pdb
+C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmAdministrateur.resources
