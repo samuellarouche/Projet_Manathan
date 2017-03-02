@@ -12,28 +12,33 @@ namespace Texcel
 {
     public partial class frmAdministrateur : Form
     {
+        OSController OSControl = new OSController();
+        PlateformeController plateformeControl = new PlateformeController();
+        JeuController jeuControl = new JeuController();
+        EmployeController employeControl = new EmployeController();
+
         public frmAdministrateur()
         {
             InitializeComponent();
         }
 
-        //Choix de la catégorie d'ajout.
+        //Choix de la catégorie d'ajout. (Jeu, OS, plateforme...)
         private void LstCategorie_SelectedIndexChanged(object sender, EventArgs e)
         {
             AfficherCacher(false, grpJeu, grpOS, grpPlateforme, grpEmploye);
 
-            switch (lstCategorie.SelectedIndex)
+            switch ((string)lstCategorie.SelectedItem)
             {
-                case 0:
+                case "OS":
                     AfficherCacher(true, grpOS);
                     break;
-                case 1:
+                case "Plateforme":
                     AfficherCacher(true, grpPlateforme);
                     break;
-                case 2:
+                case "Jeu":
                     AfficherCacher(true, grpJeu);
                     break;
-                case 3:
+                case "Employé":
                     AfficherCacher(true, grpEmploye);
                     break;
             }
@@ -43,7 +48,7 @@ namespace Texcel
         private void AfficherCacher(bool actif, params GroupBox[] grp)
         {
             for (int i = 0; i < grp.Length; i++)
-            {               
+            {
                 grp[i].Enabled = actif;
                 grp[i].Visible = actif;
             }
@@ -52,6 +57,29 @@ namespace Texcel
         private void chkTout_CheckedChanged(object sender, EventArgs e)
         {
             
+        }
+
+        //Ajoute un élément selon la catégorie d'ajout sélectionnée.
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            switch ((string)lstCategorie.SelectedItem)
+            {
+                case "OS":
+                    OSControl.CreerOS(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
+                    lstOS.Items.Add(OSControl.ListOS.Last());
+                    break;
+                case "Plateforme":
+                    plateformeControl.CreerPlateforme(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, (OS)lstOS.SelectedItem);
+                    lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                    break;
+                case "Jeu":
+                    jeuControl.CreerJeu(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, (Plateforme)lstPlateforme.SelectedItem);
+                    break;
+                case "Employé":
+                    employeControl.CreerEmploye(txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Text, txtAdresse.Text, txtTelResidentiel.Text, 
+                    Convert.ToInt32(txtPosteTel.Text), txtMatricule.Text, (string)lstCatEmploi.SelectedItem);
+                    break;
+            }
         }
     }
 }

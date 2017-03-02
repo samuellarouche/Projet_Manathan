@@ -45,7 +45,7 @@
             this.label25 = new System.Windows.Forms.Label();
             this.txtMatricule = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPosteTel = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtTelResidentiel = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.txtPrenomEmploye = new System.Windows.Forms.TextBox();
             this.grpPlateforme = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lstOS = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtTypePlateforme = new System.Windows.Forms.TextBox();
@@ -85,9 +85,7 @@
             this.lstGenre = new System.Windows.Forms.ComboBox();
             this.lstTheme = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lstPlateforme = new System.Windows.Forms.ComboBox();
-            this.lstOS = new System.Windows.Forms.ComboBox();
             this.txtConfigMin = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescJeu = new System.Windows.Forms.RichTextBox();
@@ -221,12 +219,12 @@
             // 
             // tabAjout
             // 
-            this.tabAjout.Controls.Add(this.grpEmploye);
-            this.tabAjout.Controls.Add(this.grpPlateforme);
             this.tabAjout.Controls.Add(this.btnAjouter);
             this.tabAjout.Controls.Add(this.label10);
-            this.tabAjout.Controls.Add(this.grpOS);
             this.tabAjout.Controls.Add(this.lstCategorie);
+            this.tabAjout.Controls.Add(this.grpEmploye);
+            this.tabAjout.Controls.Add(this.grpPlateforme);
+            this.tabAjout.Controls.Add(this.grpOS);
             this.tabAjout.Controls.Add(this.grpJeu);
             this.tabAjout.Location = new System.Drawing.Point(4, 22);
             this.tabAjout.Name = "tabAjout";
@@ -243,7 +241,7 @@
             this.grpEmploye.Controls.Add(this.label25);
             this.grpEmploye.Controls.Add(this.txtMatricule);
             this.grpEmploye.Controls.Add(this.label24);
-            this.grpEmploye.Controls.Add(this.textBox1);
+            this.grpEmploye.Controls.Add(this.txtPosteTel);
             this.grpEmploye.Controls.Add(this.label23);
             this.grpEmploye.Controls.Add(this.txtTelResidentiel);
             this.grpEmploye.Controls.Add(this.label21);
@@ -274,7 +272,13 @@
             // 
             // lstCatEmploi
             // 
+            this.lstCatEmploi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstCatEmploi.FormattingEnabled = true;
+            this.lstCatEmploi.Items.AddRange(new object[] {
+            "Testeur",
+            "Chef",
+            "Directeur",
+            "Administrateur"});
             this.lstCatEmploi.Location = new System.Drawing.Point(229, 206);
             this.lstCatEmploi.Name = "lstCatEmploi";
             this.lstCatEmploi.Size = new System.Drawing.Size(199, 21);
@@ -305,12 +309,12 @@
             this.label24.TabIndex = 11;
             this.label24.Text = "Poste téléphonique";
             // 
-            // textBox1
+            // txtPosteTel
             // 
-            this.textBox1.Location = new System.Drawing.Point(229, 156);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 10;
+            this.txtPosteTel.Location = new System.Drawing.Point(229, 156);
+            this.txtPosteTel.Name = "txtPosteTel";
+            this.txtPosteTel.Size = new System.Drawing.Size(199, 20);
+            this.txtPosteTel.TabIndex = 10;
             // 
             // label23
             // 
@@ -395,7 +399,7 @@
             // 
             // grpPlateforme
             // 
-            this.grpPlateforme.Controls.Add(this.comboBox1);
+            this.grpPlateforme.Controls.Add(this.lstOS);
             this.grpPlateforme.Controls.Add(this.label15);
             this.grpPlateforme.Controls.Add(this.label16);
             this.grpPlateforme.Controls.Add(this.txtTypePlateforme);
@@ -412,13 +416,14 @@
             this.grpPlateforme.Text = "Plateforme";
             this.grpPlateforme.Visible = false;
             // 
-            // comboBox1
+            // lstOS
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(116, 207);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(199, 21);
-            this.comboBox1.TabIndex = 8;
+            this.lstOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstOS.FormattingEnabled = true;
+            this.lstOS.Location = new System.Drawing.Point(116, 207);
+            this.lstOS.Name = "lstOS";
+            this.lstOS.Size = new System.Drawing.Size(199, 21);
+            this.lstOS.TabIndex = 8;
             // 
             // label15
             // 
@@ -485,6 +490,7 @@
             this.btnAjouter.TabIndex = 23;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // label10
             // 
@@ -592,7 +598,6 @@
             this.lstCategorie.Size = new System.Drawing.Size(199, 21);
             this.lstCategorie.TabIndex = 0;
             this.lstCategorie.SelectedIndexChanged += new System.EventHandler(this.LstCategorie_SelectedIndexChanged);
-            this.lstCategorie.SelectedIndex = 0;
             // 
             // grpJeu
             // 
@@ -603,9 +608,7 @@
             this.grpJeu.Controls.Add(this.lstGenre);
             this.grpJeu.Controls.Add(this.lstTheme);
             this.grpJeu.Controls.Add(this.label6);
-            this.grpJeu.Controls.Add(this.label5);
             this.grpJeu.Controls.Add(this.lstPlateforme);
-            this.grpJeu.Controls.Add(this.lstOS);
             this.grpJeu.Controls.Add(this.txtConfigMin);
             this.grpJeu.Controls.Add(this.label4);
             this.grpJeu.Controls.Add(this.txtDescJeu);
@@ -627,7 +630,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(198, 208);
+            this.label9.Location = new System.Drawing.Point(200, 208);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 21;
@@ -678,36 +681,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(310, 155);
+            this.label6.Location = new System.Drawing.Point(191, 155);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "Plateforme";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(87, 155);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "OS";
-            // 
             // lstPlateforme
             // 
+            this.lstPlateforme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstPlateforme.FormattingEnabled = true;
-            this.lstPlateforme.Location = new System.Drawing.Point(242, 171);
+            this.lstPlateforme.Location = new System.Drawing.Point(124, 171);
             this.lstPlateforme.Name = "lstPlateforme";
             this.lstPlateforme.Size = new System.Drawing.Size(186, 21);
             this.lstPlateforme.TabIndex = 13;
-            // 
-            // lstOS
-            // 
-            this.lstOS.FormattingEnabled = true;
-            this.lstOS.Location = new System.Drawing.Point(7, 171);
-            this.lstOS.Name = "lstOS";
-            this.lstOS.Size = new System.Drawing.Size(186, 21);
-            this.lstOS.TabIndex = 12;
             // 
             // txtConfigMin
             // 
@@ -817,9 +804,7 @@
         private System.Windows.Forms.ComboBox lstCategorie;
         private System.Windows.Forms.GroupBox grpJeu;
         private System.Windows.Forms.TextBox txtNomJeu;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox lstPlateforme;
-        private System.Windows.Forms.ComboBox lstOS;
         private System.Windows.Forms.RichTextBox txtConfigMin;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox txtDescJeu;
@@ -853,7 +838,7 @@
         private System.Windows.Forms.TextBox txtConfigPlateforme;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtNomPlateforme;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox lstOS;
         private System.Windows.Forms.GroupBox grpEmploye;
         private System.Windows.Forms.TextBox txtNomEmploye;
         private System.Windows.Forms.Label label22;
@@ -864,7 +849,7 @@
         private System.Windows.Forms.DateTimePicker dtpNaissance;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPosteTel;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtTelResidentiel;
         private System.Windows.Forms.Label label26;

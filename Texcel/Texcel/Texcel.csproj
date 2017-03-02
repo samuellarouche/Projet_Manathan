@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeController.cs" />
+    <Compile Include="Employes\Administrateur.cs" />
+    <Compile Include="Employes\Chef.cs" />
+    <Compile Include="Controllers\JeuController.cs" />
+    <Compile Include="Jeux\Classification.cs" />
+    <Compile Include="dbProvider.cs" />
+    <Compile Include="Employes\Directeur.cs" />
+    <Compile Include="Employes\Employe.cs" />
+    <Compile Include="Employes\Equipe.cs" />
     <Compile Include="frmConnexion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,8 +67,19 @@
     <Compile Include="frmAdministrateur.Designer.cs">
       <DependentUpon>frmAdministrateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jeux\Genre.cs" />
+    <Compile Include="Jeux\Jeu.cs" />
+    <Compile Include="Jeux\OS.cs" />
+    <Compile Include="Jeux\Plateforme.cs" />
+    <Compile Include="Controllers\OSController.cs" />
+    <Compile Include="Controllers\PlateformeController.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Tests\ProjetTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Test.cs" />
+    <Compile Include="Employes\Testeur.cs" />
+    <Compile Include="Jeux\Theme.cs" />
+    <Compile Include="Tests\TypeTest.cs" />
     <EmbeddedResource Include="frmConnexion.resx">
       <DependentUpon>frmConnexion.cs</DependentUpon>
     </EmbeddedResource>
