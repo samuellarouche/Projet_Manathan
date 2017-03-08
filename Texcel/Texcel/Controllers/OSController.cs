@@ -15,16 +15,24 @@ namespace Texcel
         {
 
         }
-        
-        public override string Insert()
-        {
-            return Provider.ExecuterCommande("INSERT INTO Region VALUES(@0, @1);", 10, "Tronc");
-        }
 
         //Permet de créer un OS dans la BD.
-        public void CreerOS(string nom, string version, string code, string edition)
+        public override void Insert()
         {
-            
+            Provider.ExecuterCommande("INSERT INTO Shippers VALUES(@0, @1);", "L'anus enchante", "(550) 555-5555");
+        }
+
+        //Permet de récupérer tous les OS de la BD.
+        public override void Select()
+        {
+            foreach(object os in Provider.CommandeLecture("SELECT * FROM Shippers"))
+            {
+                //listOS.Add((OS)os);
+            }
+        }
+
+        public void CreerOS(string nom, string version, string code, string edition)
+        {           
             os = new OS(nom, version, code, edition);
             listOS.Add(os);
         }

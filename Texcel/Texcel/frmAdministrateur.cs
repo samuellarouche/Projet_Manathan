@@ -58,7 +58,8 @@ namespace Texcel
 
         private void chkTout_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(OSControl.Insert());
+            //OSControl.Insert();
+            OSControl.Select();
         }
 
         //Ajoute un élément selon la catégorie d'ajout sélectionnée.

@@ -15,32 +15,49 @@ namespace Texcel
 
         }
 
-        public string ExecuterCommande(string commande, params object[] valeurs)
+        //Éxecute une commande SQL avec paramètres.
+        public void ExecuterCommande(string script, params object[] valeurs)
         {           
-            string asd = "";
-
-
             using(SqlConnection connexion = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=NORTHWND;Trusted_Connection=True;"))
             {
                 connexion.Open();
 
-                SqlCommand command = new SqlCommand(commande, connexion);
+                SqlCommand commande = new SqlCommand(script, connexion);
 
                 for(int i = 0; i < valeurs.Length; i++)
                 {
-                    command.Parameters.Add(new SqlParameter(i.ToString(), valeurs[i]));
+                    commande.Parameters.Add(new SqlParameter(i.ToString(), valeurs[i]));
                 }
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                commande.BeginExecuteNonQuery();
+            }
+        }
+
+        //Éxecute une commande SQL et retourne la liste de toutes les valeurs de chaque ligne.
+        public List<object[]> CommandeLecture(string script)
+        {
+            List<object[]> donnees = new List<object[]>();           
+
+            using (SqlConnection connexion = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=NORTHWND;Trusted_Connection=True;"))
+            {
+                connexion.Open();
+
+                SqlCommand commande = new SqlCommand(script, connexion);
+
+                using (SqlDataReader reader = commande.ExecuteReader())
                 {
+                    object[] ligne = new object[reader.FieldCount];
+
                     while (reader.Read())
                     {
-                        asd += " " + reader[0] + " " + reader[1] + " " + reader[2];
+                        reader.GetValues(ligne);
+                        donnees.Add(ligne);
+                        ligne = new object[reader.FieldCount];
                     }
                 }
             }
 
-            return asd;
+            return donnees;
         }
     }
 }
