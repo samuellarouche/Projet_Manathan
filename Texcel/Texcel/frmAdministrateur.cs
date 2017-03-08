@@ -17,6 +17,8 @@ namespace Texcel
         JeuController jeuControl = new JeuController();
         EmployeController employeControl = new EmployeController();
 
+        dbProvider asd = new dbProvider();
+
         public frmAdministrateur()
         {
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace Texcel
 
         private void chkTout_CheckedChanged(object sender, EventArgs e)
         {
-            
+            MessageBox.Show(OSControl.Insert());
         }
 
         //Ajoute un élément selon la catégorie d'ajout sélectionnée.
@@ -65,7 +67,8 @@ namespace Texcel
             switch ((string)lstCategorie.SelectedItem)
             {
                 case "OS":
-                    OSControl.CreerOS(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
+                    //OSControl.CreerOS(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
+                    
                     lstOS.Items.Add(OSControl.ListOS.Last());
                     break;
                 case "Plateforme":

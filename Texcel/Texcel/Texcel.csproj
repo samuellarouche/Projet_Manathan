@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeController.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Controllers\EmployeController.cs" />
     <Compile Include="Employes\Administrateur.cs" />
     <Compile Include="Employes\Chef.cs" />
     <Compile Include="Controllers\JeuController.cs" />
