@@ -17,9 +17,9 @@ namespace Texcel
         }
 
         //Permet de créer un OS dans la BD.
-        public override void Insert()
+        public override void Insert(params string[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO Shippers VALUES(@0, @1);", "L'anus enchante", "(550) 555-5555");
+            Provider.ExecuterCommande("INSERT INTO tblOS VALUES(@0, @1, @2, @3);", champs[0], champs[1], champs[2], champs[3]);
         }
 
         //Permet de récupérer tous les OS de la BD.

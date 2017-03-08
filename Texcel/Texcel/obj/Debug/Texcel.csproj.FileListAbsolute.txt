@@ -12,7 +12,6 @@ C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmAdministr
 C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.csprojResolveAssemblyReference.cache
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\bin\Debug\Texcel.exe
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\bin\Debug\Texcel.pdb
-C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.csprojResolveAssemblyReference.cache
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmConnexion.resources
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmAdministrateur.resources
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.Properties.Resources.resources

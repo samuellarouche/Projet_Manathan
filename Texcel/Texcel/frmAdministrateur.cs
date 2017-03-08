@@ -68,9 +68,8 @@ namespace Texcel
             switch ((string)lstCategorie.SelectedItem)
             {
                 case "OS":
-                    OSControl.CreerOS(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
-                    
-                    lstOS.Items.Add(OSControl.ListOS.Last());
+                    OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
+                    //lstOS.Items.Add(OSControl.ListOS.Last());
                     break;
                 case "Plateforme":
                     plateformeControl.CreerPlateforme(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, (OS)lstOS.SelectedItem);
