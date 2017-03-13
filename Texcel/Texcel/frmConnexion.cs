@@ -21,15 +21,15 @@ namespace Texcel
         private void btnConnecter_Click(object sender, EventArgs e)
         {          
             frmAdministrateur admin = new frmAdministrateur();
-            if (connect.Connexion(txtNomUtilisateur.Text))//Reste a checker le type de compte.
-            {
+            //if (connect.Connexion(txtNomUtilisateur.Text))//Reste a checker le type de compte.
+            //{
                 this.Hide();
                 admin.Show();
-            }
-            else
-            {
-                MessageBox.Show("Fuck you");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Fuck you");
+            //}
         }
     }
 }

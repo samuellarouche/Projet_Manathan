@@ -18,7 +18,7 @@ namespace Texcel
         //Permet de créer une plateforme dans la BD.
         public override void Insert(params string[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2);", champs[0], champs[1], champs[2]);//Manque OS pas encore dans la BD
+            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], champs[3]);//Manque OS pas encore dans la BD
         }
 
         //Permet de récupérer toutes les plateformes de la BD.
