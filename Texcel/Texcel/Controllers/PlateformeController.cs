@@ -6,21 +6,31 @@ using System.Threading.Tasks;
 
 namespace Texcel
 {
-    class PlateformeController
+    class PlateformeController : Controller
     {
         List<Plateforme> listPlateforme = new List<Plateforme>();
-        Plateforme plateforme;
 
-        public PlateformeController()
+        public PlateformeController() : base()
         {
-
+            Select();
         }
 
         //Permet de créer une plateforme dans la BD.
-        public void CreerPlateforme(string nom, string configuration, string type, OS os)
+        public override void Insert(params string[] champs)
         {
-            plateforme = new Plateforme(nom, configuration, type, os);
-            listPlateforme.Add(plateforme);
+            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2);", champs[0], champs[1], champs[2]);//Manque OS pas encore dans la BD
+        }
+
+        //Permet de récupérer toutes les plateformes de la BD.
+        public override void Select()
+        {
+            Plateforme plateforme;
+
+            foreach(object[] selection in Provider.CommandeLecture("SELECT * FROM tblPlateforme"))
+            {
+                plateforme = new Plateforme(selection[0].ToString(), selection[1].ToString(), selection[2].ToString(), null);
+                listPlateforme.Add(plateforme);
+            }
         }
 
         public List<Plateforme> ListPlateforme

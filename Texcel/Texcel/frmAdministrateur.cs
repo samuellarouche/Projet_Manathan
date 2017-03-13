@@ -17,11 +17,12 @@ namespace Texcel
         JeuController jeuControl = new JeuController();
         EmployeController employeControl = new EmployeController();
 
-        dbProvider asd = new dbProvider();
-
         public frmAdministrateur()
         {
             InitializeComponent();
+
+            lstOS.Items.AddRange(OSControl.ListOS.ToArray());
+            lstPlateforme.Items.AddRange(plateformeControl.ListPlateforme.ToArray());      
         }
 
         //Choix de la catégorie d'ajout. (Jeu, OS, plateforme...)
@@ -69,18 +70,17 @@ namespace Texcel
             {
                 case "OS":
                     OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
-                    //lstOS.Items.Add(OSControl.ListOS.Last());
                     break;
                 case "Plateforme":
-                    plateformeControl.CreerPlateforme(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, (OS)lstOS.SelectedItem);
-                    lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                    plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text);//Manque OS pas fait dans la BD encore.
+                    //lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
                     break;
                 case "Jeu":
-                    jeuControl.CreerJeu(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, (Plateforme)lstPlateforme.SelectedItem);
+                    jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text);//Pas encore de plateforme dans la bd.
                     break;
                 case "Employé":
-                    employeControl.CreerEmploye(txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Text, txtAdresse.Text, txtTelResidentiel.Text, 
-                    Convert.ToInt32(txtPosteTel.Text), txtMatricule.Text, (string)lstCatEmploi.SelectedItem);
+                    employeControl.Insert(txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Text, txtAdresse.Text, txtTelResidentiel.Text, 
+                    txtPosteTel.Text, txtMatricule.Text, (string)lstCatEmploi.SelectedItem);
                     break;
             }
         }

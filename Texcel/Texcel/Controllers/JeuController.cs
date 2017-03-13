@@ -6,21 +6,31 @@ using System.Threading.Tasks;
 
 namespace Texcel
 {
-    class JeuController
+    class JeuController : Controller
     {
         List<Jeu> listJeu = new List<Jeu>();
-        Jeu jeu;
 
-        public JeuController()
+        public JeuController() : base()
         {
 
         }
 
         //Permet de créer un jeu dans la BD.
-        public void CreerJeu(string nom, string developpeur, string description, string configMin, Plateforme plateforme)
+        public override void Insert(params string[] champs)
         {
-            jeu = new Jeu(nom, developpeur, description, configMin, plateforme);
-            listJeu.Add(jeu);
+            Provider.ExecuterCommande("INSERT INTO tblJeux VALUES (@0, @1, @2, @3)", champs[0], champs[1], champs[2], champs[3]);//Pas encore de plateforme dans la bd
+        }
+
+        //Permet de récupérer tous les jeux de la BD.
+        public override void Select()
+        {
+            Jeu jeu;
+
+            foreach(object[] selection in Provider.CommandeLecture("SELECT * FROM tblJeux"))
+            {
+                jeu = new Jeu(selection[0].ToString(), selection[1].ToString(), selection[2].ToString(), selection[3].ToString(), null);
+                listJeu.Add(jeu);
+            }
         }
 
         public List<Jeu> ListJeu

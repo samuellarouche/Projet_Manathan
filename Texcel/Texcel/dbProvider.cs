@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Sql;
-using System.Threading;
 using System.Data.SqlClient;
 
 namespace Texcel
@@ -27,7 +26,7 @@ namespace Texcel
 
                 for(int i = 0; i < valeurs.Length; i++)
                 {
-                    commande.Parameters.Add(new SqlParameter(i.ToString(), valeurs[i]));
+                    commande.Parameters.Add(new SqlParameter(i.ToString(), valeurs[i]));//Crée les variables SQL pour insérer les valeurs.(Ex. @0, @1...)
                 }
 
                 commande.ExecuteNonQuery();
@@ -39,7 +38,7 @@ namespace Texcel
         {
             List<object[]> donnees = new List<object[]>();           
 
-            using (SqlConnection connexion = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=NORTHWND;Trusted_Connection=True;"))
+            using (SqlConnection connexion = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=BD_Texcel;Trusted_Connection=True;"))
             {
                 connexion.Open();
 
