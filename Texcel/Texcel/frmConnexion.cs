@@ -12,16 +12,24 @@ namespace Texcel
 {
     public partial class frmConnexion : Form
     {
+        ConnectController connect = new ConnectController();
         public frmConnexion()
         {
             InitializeComponent();
         }
 
         private void btnConnecter_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmAdministrateur asd = new frmAdministrateur();
-            asd.Show();
+        {          
+            frmAdministrateur admin = new frmAdministrateur();
+            if (connect.Connexion(txtNomUtilisateur.Text))//Reste a checker le type de compte.
+            {
+                this.Hide();
+                admin.Show();
+            }
+            else
+            {
+                MessageBox.Show("Fuck you");
+            }
         }
     }
 }
