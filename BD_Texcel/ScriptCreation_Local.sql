@@ -1,14 +1,14 @@
 USE MASTER
 GO
 
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'BD_Texcel')
-DROP DATABASE BD_Texcel
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'BD_Texcel_SAM_FRAN')
+DROP DATABASE BD_Texcel_SAM_FRAN
 
 GO
-CREATE DATABASE BD_Texcel/*ON PRIMARY
-(NAME = 'BD_Texcel_ppal', FILENAME = 'c:\BD\BD_Texcel_ppal.mdf', SIZE = 10MB, MAXSIZE = UNLIMITED, FILEGROWTH = 1MB)
+CREATE DATABASE BD_Texcel_SAM_FRAN/*ON PRIMARY
+(NAME = 'BD_Texcel_SAM_FRAN_ppal', FILENAME = 'c:\BD\BD_Texcel_SAM_FRAN_ppal.mdf', SIZE = 10MB, MAXSIZE = UNLIMITED, FILEGROWTH = 1MB)
 LOG ON
-(NAME = 'BD_Texcel_log', FILENAME = 'c:\BD\BD_Texcel_log.ldf', SIZE = 5MB, MAXSIZE = 25MB, FILEGROWTH = 10%)
+(NAME = 'BD_Texcel_SAM_FRAN_log', FILENAME = 'c:\BD\BD_Texcel_SAM_FRAN_log.ldf', SIZE = 5MB, MAXSIZE = 25MB, FILEGROWTH = 10%)
 GO*/
 
 
@@ -16,17 +16,17 @@ GO*/
 GO
 PRINT('Création de la table tblEmploye')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblEmploye') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblEmploye
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblEmploye') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEmploye
 
-CREATE TABLE tblEmploye		(matricule				varchar(1000)		NOT NULL,
+CREATE TABLE tblEmploye		(matricule				varchar(200)		NOT NULL,
 							 PRIMARY KEY([matricule]),
 							 nom					varchar(50)			NOT NULL,
 							 prenom					varchar(50)			NOT NULL,
-							 dateNaissance			datetime			NOT NULL,
+							 dateNaissance			date				NOT NULL,
 							 adresse				varchar(50)			NOT NULL,
 							 telResidentiel			varchar(50)			NOT NULL,
 							 posteTelephonique		varchar(5)			NOT NULL,
@@ -39,28 +39,28 @@ GO
 
 PRINT('Création de la table tblEquipe')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblEquipe') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblEquipe
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblEquipe') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEquipe
 
-CREATE TABLE tblEquipe		(codeEquipe VARCHAR(50)	NOT NULL,
+CREATE TABLE tblEquipe		(codeEquipe int IDENTITY(1,1)	NOT NULL,
 							 PRIMARY KEY(codeEquipe),
-							 matricule	varchar(1000)	NULL
+							 matricule	varchar(200)	NULL
 							);
 GO
 
 PRINT('Création de la table tblEquipeTest')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblEquipeTest') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblEquipeTest
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblEquipeTest') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEquipeTest
 
-CREATE TABLE tblEquipeTest	(codeEquipe VARCHAR(50)	NOT NULL,
-							 codeTest	varchar(50)	NOT NULL,
+CREATE TABLE tblEquipeTest	(codeEquipe int	NOT NULL,
+							 codeTest	int	NOT NULL,
 							 PRIMARY KEY(codeEquipe, codeTest)
 							);
 GO
@@ -70,36 +70,36 @@ GO
 
 PRINT('Création de la table tblJeux')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblJeux') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblJeux
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblJeux') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblJeux
 
-CREATE TABLE tblJeux		(codeJeux			varchar(50)		NOT NULL,
+CREATE TABLE tblJeux		(codeJeux			int IDENTITY(1,1)		NOT NULL,
 							 PRIMARY KEY(codeJeux),
 							 nom				varchar(50)		NOT NULL,
 							 developpeur		varchar(50)		NOT NULL,
 							 descriptionJeu		varchar(50)		NOT NULL,
 							 configMin			varchar(50)		NOT NULL,
-							 codeclassification	varchar(50)		NOT NULL,
-							 codeGenre	varchar(50)				NOT NULL,
-							 codeTheme	varchar(50)				NOT NULL
+							 codeclassification	int		NOT NULL,
+							 codeGenre	int				NOT NULL,
+							 codeTheme	int				NOT NULL
 							);
 GO
 
 
 PRINT('Création de la table tblOS')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
-IF OBJECT_ID('BD_Texcel.dbo.tblOS') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblOS
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblOS') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblOS
 
-CREATE TABLE tblOS		(codeOS					varchar(50)				NOT NULL,
-						 PRIMARY KEY(codeOS),
-						 nom					varchar(50)				NOT NULL,
+CREATE TABLE tblOS		(nom					varchar(50)				NOT NULL,
 						 versionOS				varchar(50)				NOT NULL,
+						 codeOS					varchar(50)				NOT NULL,
+						 PRIMARY KEY(codeOS),
 						 edition				varchar(50)				NOT NULL		
 						);
 GO
@@ -108,18 +108,18 @@ GO
 -- Création des table pour les tests
 PRINT('Création de la table tblPlateforme')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblPlateforme') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblPlateforme
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblPlateforme') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblPlateforme
 
 CREATE TABLE tblPlateforme		(
-								 codePlateforme					varchar(50)						NOT NULL,
-								 PRIMARY KEY(codePlateforme),
 								 nom							varchar(50)						NOT NULL,
 								 configuration					varchar(50)						NOT NULL,
 								 typeConfiguration				varchar(50)						NOT NULL,
+								 codePlateforme					int IDENTITY(1,1)						NOT NULL,
+								 PRIMARY KEY(codePlateforme),
 								 codeOS							varchar(50)						NOT NULL
 								);
 GO
@@ -127,15 +127,15 @@ GO
 
 PRINT('Création de la table tblPlateformeJeux')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblPlateformeJeux') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblPlateformeJeux
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux
 
 CREATE TABLE tblPlateformeJeux	(
-								 codePlateforme	varchar(50)	NOT NULL,
-								 codeJeux	varchar(50)	NOT NULL,
+								 codePlateforme	int IDENTITY(1,1)	NOT NULL,
+								 codeJeux	int	NOT NULL,
 								 PRIMARY KEY(codePlateforme, codeJeux)
 								);
 GO 
@@ -143,14 +143,14 @@ GO
 
 PRINT('Création de la table tblTypeTests')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblTypeTests') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblTypeTests
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblTypeTests') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblTypeTests
 
 CREATE TABLE tblTypeTests		(
-								 codeType varchar(50)	NOT NULL,
+								 codeType int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeType),
 								 categorie	varchar(50)		NOT NULL,
 								 descriptionCategorie	varchar(50)
@@ -160,48 +160,48 @@ GO
 
 PRINT('Création de la table tblTest')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblTest') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblTest
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblTest') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblTest
 
 CREATE TABLE tblTest			(
-								 codeTest	varchar(50)	NOT NULL,
+								 codeTest	int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeTest),
-								 Nom	varchar(50)		NOT NULL,
+								 nom	varchar(50)		NOT NULL,
 								 descriptionTest	varchar(50),
-								 codeType varchar(50)	NOT NULL
+								 codeType int	NOT NULL
 								);
 GO 
 
 PRINT('Création de la table tblProjetTest')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblProjetTest') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblProjetTest
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblProjetTest') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblProjetTest
 
 CREATE TABLE tblProjetTest		(
-								 codeProjetTest	varchar(50)	NOT NULL,
+								 codeProjetTest	int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeProjetTest),
-								 codeJeux			varchar(50)		NOT NULL
+								 codeJeux		int	NOT NULL
 								);
 GO 
 
 
 PRINT('Création de la table tblTestProjetTest')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblTestProjetTest') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblTestProjetTest
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblTestProjetTest') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblTestProjetTest
 
 CREATE TABLE tblTestProjetTest	(
-								 codeProjetTest	varchar(50)	NOT NULL,
-								 codeTest	varchar(50)	NOT NULL,
+								 codeProjetTest	int	NOT NULL,
+								 codeTest	int	NOT NULL,
 								 PRIMARY KEY(codeProjetTest, codeTest)
 								);
 GO 
@@ -209,14 +209,14 @@ GO
 
 PRINT('Création de la table tblTheme')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblTheme') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblTheme
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblTheme') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblTheme
 
 CREATE TABLE tblTheme			(
-								 codeTheme	varchar(50)	NOT NULL,
+								 codeTheme	int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeTheme),
 								 nomTheme	varchar(50)	NOT NULL,
 								 descriptionTheme	varchar(50) NULL
@@ -225,14 +225,14 @@ GO
 
 PRINT('Création de la table tblGenre')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblGenre') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblGenre
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblGenre') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblGenre
 
 CREATE TABLE tblGenre			(
-								 codeGenre	varchar(50)	NOT NULL,
+								 codeGenre	int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeGenre),
 								 nomGenre	varchar(50)	NOT NULL,
 								 descriptionGenre	varchar(50) NULL
@@ -242,14 +242,14 @@ GO
 
 PRINT('Création de la table tblClassification')
 -- ----------------------------------------------------------
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel.dbo.tblClassification') IS NOT NULL
-DROP TABLE BD_Texcel.dbo.tblClassification
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblClassification') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblClassification
 
 CREATE TABLE tblClassification			(
-										 codeclassification	varchar(50)	NOT NULL,
+										 codeclassification	int IDENTITY(1,1)	NOT NULL,
 										 PRIMARY KEY(codeclassification),
 										 nomClassification	varchar(50)	NOT NULL,
 										 descriptionClassification	varchar(50) NULL

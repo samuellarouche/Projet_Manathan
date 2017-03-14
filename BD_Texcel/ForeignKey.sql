@@ -1,4 +1,4 @@
-USE BD_Texcel
+USE BD_Texcel_SAM_FRAN
 GO
 
 ALTER TABLE tblEquipe ADD CONSTRAINT fk_matricule FOREIGN KEY (matricule) REFERENCES tblEmploye (matricule)
