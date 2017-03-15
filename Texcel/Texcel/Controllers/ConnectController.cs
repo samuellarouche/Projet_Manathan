@@ -13,12 +13,12 @@ namespace Texcel
 
         }
 
-        public override void Insert(params string[] champs)
+        public override void Insert(params object[] champs)
         {
             throw new NotImplementedException();
         }
 
-        public override void Select()
+        public override void Select(string where)
         {
             throw new NotImplementedException();
         }

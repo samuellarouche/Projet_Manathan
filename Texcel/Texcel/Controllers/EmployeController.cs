@@ -41,13 +41,13 @@ namespace Texcel
         //    listEmploye.Add(employe);
         //}
 
-        public override void Insert(params string[] champs)
+        public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO tblEmploye VALUES (@0, @1, @2, @3, @4, @5, @6)",
                 champs[0], champs[1], champs[2], champs[3], champs[4], champs[5], champs[6]);
         }
 
-        public override void Select()
+        public override void Select(string where)
         {
             throw new NotImplementedException();
         }

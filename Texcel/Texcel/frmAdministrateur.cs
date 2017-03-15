@@ -57,12 +57,6 @@ namespace Texcel
             }
         }
 
-        private void chkTout_CheckedChanged(object sender, EventArgs e)
-        {
-            //OSControl.Insert();
-            OSControl.Select();
-        }
-
         //Ajoute un élément selon la catégorie d'ajout sélectionnée.
         private void btnAjouter_Click(object sender, EventArgs e)
         {
@@ -72,8 +66,7 @@ namespace Texcel
                     OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
                     break;
                 case "Plateforme":
-                    plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text);//Manque OS pas fait dans la BD encore.
-                    //lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                    plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
                     break;
                 case "Jeu":
                     jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text);//Pas encore de plateforme dans la bd.
@@ -81,6 +74,73 @@ namespace Texcel
                 case "Employé":
                     employeControl.Insert(txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Text, txtAdresse.Text, txtTelResidentiel.Text, 
                     txtPosteTel.Text, txtMatricule.Text, (string)lstCatEmploi.SelectedItem);
+                    break;
+            }
+        }
+
+        //Recherche les éléments dans la BD et les affiche dans la ListView.
+        private void btnRechercher_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+
+            if (radOS.Checked)
+            {
+                listView1.Columns.AddRange(new ColumnHeader[] { colCodeOS, colNom, colVersion, colEdition });
+                OSControl.Select("WHERE nom = '" + txtRecherche.Text +
+                    "' OR versionOS = '" + txtRecherche.Text +
+                    "' OR codeOS = '" + txtRecherche.Text +
+                    "' OR edition = '" + txtRecherche.Text + "'");
+
+                foreach (OS os in OSControl.ListOS)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[]
+                    {
+                        os.Code,
+                        os.Nom,
+                        os.Version,
+                        os.Edition
+                    }));
+                }
+            }             
+            else if (radPlateforme.Checked)
+            {
+                listView1.Columns.AddRange(new ColumnHeader[] { colCodePlateforme, colNom, colConfiguration, colTypeConfig, colCodeOS });
+                plateformeControl.Select("");
+            }
+        }
+
+        private void AjoutItemList()
+        {
+            foreach (OS os in OSControl.ListOS)
+            {
+                listView1.Items.Add(new ListViewItem(new string[]
+                {
+                        os.Code,
+                        os.Nom,
+                        os.Version,
+                        os.Edition
+                }));
+            }
+        }
+
+        //Change les colonnes du ListView selon le RadioButton coché.
+        private void rad_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radio = (RadioButton)sender;
+   
+            listView1.Clear();
+            
+            switch (radio.Name)
+            {
+                case "radOS":
+                    
+                    break;
+                case "radPlateforme":
+                    break;
+                case "radJeu":
+                    listView1.Columns.AddRange(new ColumnHeader[] { colCodeJeu, colNom, colDeveloppeur, colDescription, colConfigMin, colClassification, colGenre, colTheme });
+                    break;
+                case "radEmploye":
                     break;
             }
         }

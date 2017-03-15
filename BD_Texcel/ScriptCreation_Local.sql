@@ -96,10 +96,11 @@ GO
 IF OBJECT_ID('BD_Texcel.dbo.tblOS') IS NOT NULL
 DROP TABLE BD_Texcel.dbo.tblOS
 
-CREATE TABLE tblOS		(codeOS					varchar(50)				NOT NULL,
-						 PRIMARY KEY(codeOS),
+CREATE TABLE tblOS		(
 						 nom					varchar(50)				NOT NULL,
 						 versionOS				varchar(50)				NOT NULL,
+						 codeOS					varchar(50)				NOT NULL,
+						 PRIMARY KEY(codeOS),
 						 edition				varchar(50)				NOT NULL		
 						);
 GO

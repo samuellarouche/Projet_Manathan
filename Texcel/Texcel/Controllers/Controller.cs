@@ -20,8 +20,8 @@ namespace Texcel
             get { return provider; }
         }
 
-        public abstract void Insert(params string[] champs);
+        public abstract void Insert(params object[] champs);
 
-        public abstract void Select();
+        public abstract void Select(string where);
     }
 }

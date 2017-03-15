@@ -12,23 +12,25 @@ namespace Texcel
 
         public PlateformeController() : base()
         {
-            Select();
+            Select("");
         }
 
         //Permet de créer une plateforme dans la BD.
-        public override void Insert(params string[] champs)
+        public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], champs[3]);//Manque OS pas encore dans la BD
+            OS os = (OS)champs[3];
+            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], os.Code);//Manque la primary key
+            //Ajouter la plateforme dans la liste de plateforme.
         }
 
         //Permet de récupérer toutes les plateformes de la BD.
-        public override void Select()
+        public override void Select(string where)
         {
             Plateforme plateforme;
 
-            foreach(object[] selection in Provider.CommandeLecture("SELECT * FROM tblPlateforme"))
+            foreach(object[] selection in Provider.CommandeLecture("SELECT * FROM tblPlateforme" + where))
             {
-                plateforme = new Plateforme(selection[0].ToString(), selection[1].ToString(), selection[2].ToString(), null);
+                plateforme = new Plateforme(selection[1].ToString(), selection[2].ToString(), selection[3].ToString(), null);//Faire une requete pour trouver le OS selon le code.
                 listPlateforme.Add(plateforme);
             }
         }

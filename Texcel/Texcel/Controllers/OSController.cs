@@ -12,21 +12,23 @@ namespace Texcel
 
         public OSController() : base()
         {
-            Select();
+            Select("");
         }
 
         //Permet de créer un OS dans la BD.
-        public override void Insert(params string[] champs)
+        public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO tblOS VALUES(@0, @1, @2, @3);", champs[0], champs[1], champs[2], champs[3]);
+            //Ajouter le OS dans la liste de OS.s
         }
 
         //Permet de récupérer tous les OS de la BD.
-        public override void Select()
+        public override void Select(string where)
         {
             OS os;
 
-            foreach (object[] selection in Provider.CommandeLecture("SELECT * FROM tblOS"))
+            listOS.Clear();
+            foreach (object[] selection in Provider.CommandeLecture("SELECT * FROM tblOS " + where))
             {
                 os = new OS(selection[0].ToString(), selection[1].ToString(), selection[2].ToString(), selection[3].ToString());
                 listOS.Add(os);
