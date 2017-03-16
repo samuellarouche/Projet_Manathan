@@ -8,15 +8,18 @@ namespace Texcel
 {
     class Jeu
     {
-        string nom, developpeur, description, configMin, codePlateforme;
+        string nom, developpeur, description, configMin, codePlateforme, codeClassification, codeTheme, codeGenre;
 
-        public Jeu(string nom, string developpeur, string description, string configMin, string codePlateforme)
+        public Jeu(string nom, string developpeur, string description, string configMin, string codePlateforme, string codeClassification, string codeGenre, string codeTheme)
         {
             this.nom = nom;
             this.developpeur = developpeur;
             this.description = description;
             this.configMin = configMin;
             this.codePlateforme = codePlateforme;
+            this.codeClassification = codeClassification;
+            this.codeTheme = codeTheme;
+            this.codeGenre = codeGenre;
         }
 
         public string Nom
@@ -42,6 +45,21 @@ namespace Texcel
         public string CodePlateforme
         {
             get { return codePlateforme; }
+        }
+
+        public string CodeClassification
+        {
+            get { return codeClassification; }
+        }
+
+        public string CodeGenre
+        {
+            get { return codeGenre; }
+        }
+
+        public string CodeTheme
+        {
+            get { return codeTheme; }
         }
     }
 }

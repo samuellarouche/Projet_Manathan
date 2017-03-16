@@ -125,6 +125,22 @@ namespace Texcel
             else if (radJeu.Checked)
             {
                 jeuControl.Select("");
+
+                foreach(Jeu jeu in jeuControl.ListJeu)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[]
+                    {
+                        jeu.Nom,
+                        jeu.Developpeur,
+                        jeu.Description,
+                        jeu.ConfigMin,
+                        //jeu.CodePlateforme Trouver un moyen pour mettre le code de plateforme.
+                        jeu.CodeClassification,
+                        jeu.CodeGenre,
+                        jeu.CodeTheme
+                    }
+                    ));
+                }
             }
             else
             {
@@ -171,7 +187,7 @@ namespace Texcel
                     listView1.Columns.AddRange(new ColumnHeader[] { colNom, colConfiguration, colTypeConfig, colCodeOS });
                     break;
                 case "radJeu":
-                    listView1.Columns.AddRange(new ColumnHeader[] { colCodeJeu, colNom, colDeveloppeur, colDescription, colConfigMin, colClassification, colGenre, colTheme });
+                    listView1.Columns.AddRange(new ColumnHeader[] { colNom, colDeveloppeur, colDescription, colConfigMin, colClassification, colGenre, colTheme });
                     break;
                 case "radEmploye":
                     listView1.Columns.AddRange(new ColumnHeader[] { colMatricule, colPrenom, colNom, colDdn, colAdresse, colTelResidentiel, colPosteTel, colTitreEmploi });

@@ -26,9 +26,10 @@ namespace Texcel
         {
             Jeu jeu;
 
+            listJeu.Clear();
             foreach(object[] jeuSelectionne in Provider.CommandeLecture("SELECT * FROM tblJeux" + where))
             {
-                jeu = new Jeu(jeuSelectionne[0].ToString(), jeuSelectionne[1].ToString(), jeuSelectionne[2].ToString(), jeuSelectionne[3].ToString(), jeuSelectionne[4].ToString());
+                jeu = new Jeu(jeuSelectionne[0].ToString(), jeuSelectionne[1].ToString(), jeuSelectionne[2].ToString(), jeuSelectionne[3].ToString(), jeuSelectionne[4].ToString(), jeuSelectionne[5].ToString(), jeuSelectionne[6].ToString(), jeuSelectionne[7].ToString());
                 listJeu.Add(jeu);
             }
         }
