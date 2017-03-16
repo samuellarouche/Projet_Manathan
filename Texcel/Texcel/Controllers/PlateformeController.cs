@@ -9,6 +9,7 @@ namespace Texcel
     class PlateformeController : Controller
     {
         List<Plateforme> listPlateforme = new List<Plateforme>();
+        Plateforme plateforme;
 
         public PlateformeController() : base()
         {
@@ -19,18 +20,21 @@ namespace Texcel
         public override void Insert(params object[] champs)
         {
             OS os = (OS)champs[3];
-            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], os.Code);//Manque la primary key
-            //Ajouter la plateforme dans la liste de plateforme.
+            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], os.Code);
+
+            //plateforme = new Plateforme(champs[0].ToString(), champs[1].ToString(), champs[2].ToString(), os.Code);
+            //listPlateforme.Add(plateforme);
         }
 
         //Permet de récupérer toutes les plateformes de la BD.
         public override void Select(string where)
         {
-            Plateforme plateforme;
+            
 
-            foreach(object[] selection in Provider.CommandeLecture("SELECT * FROM tblPlateforme" + where))
+            listPlateforme.Clear();
+            foreach (object[] plateformeSelectionnee in Provider.CommandeLecture("SELECT * FROM tblPlateforme " + where))
             {
-                plateforme = new Plateforme(selection[1].ToString(), selection[2].ToString(), selection[3].ToString(), null);//Faire une requete pour trouver le OS selon le code.
+                plateforme = new Plateforme(plateformeSelectionnee[0].ToString(), plateformeSelectionnee[1].ToString(), plateformeSelectionnee[2].ToString(), plateformeSelectionnee[4].ToString());
                 listPlateforme.Add(plateforme);
             }
         }

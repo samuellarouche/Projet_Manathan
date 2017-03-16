@@ -8,15 +8,14 @@ namespace Texcel
 {
     class Plateforme
     {
-        OS os;
-        string nom, configuration, type;
+        string nom, configuration, typeConfig, codeOS;
 
-        public Plateforme(string nom, string configuration, string type, OS os)
+        public Plateforme(string nom, string configuration, string typeConfig, string codeOS)
         {
             this.nom = nom;
             this.configuration = configuration;
-            this.type = type;
-            this.os = os;
+            this.typeConfig = typeConfig;
+            this.codeOS = codeOS;
         }
 
         public override string ToString()
@@ -36,12 +35,12 @@ namespace Texcel
 
         public string Type
         {
-            get { return type; }
+            get { return typeConfig; }
         }
 
-        public OS OS
+        public string CodeOS
         {
-            get { return os; }
+            get { return codeOS; }
         }
     }
 }

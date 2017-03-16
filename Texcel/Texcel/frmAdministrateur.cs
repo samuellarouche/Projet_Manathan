@@ -69,11 +69,11 @@ namespace Texcel
                     plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
                     break;
                 case "Jeu":
-                    jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text);//Pas encore de plateforme dans la bd.
+                    jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);//Pas encore de plateforme dans la bd.
                     break;
                 case "Employé":
-                    employeControl.Insert(txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Text, txtAdresse.Text, txtTelResidentiel.Text, 
-                    txtPosteTel.Text, txtMatricule.Text, (string)lstCatEmploi.SelectedItem);
+                    employeControl.Insert(txtMatricule.Text, txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date, txtAdresse.Text, txtTelResidentiel.Text, 
+                    txtPosteTel.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text);
                     break;
             }
         }
@@ -85,11 +85,12 @@ namespace Texcel
 
             if (radOS.Checked)
             {
-                listView1.Columns.AddRange(new ColumnHeader[] { colCodeOS, colNom, colVersion, colEdition });
-                OSControl.Select("WHERE nom = '" + txtRecherche.Text +
-                    "' OR versionOS = '" + txtRecherche.Text +
-                    "' OR codeOS = '" + txtRecherche.Text +
-                    "' OR edition = '" + txtRecherche.Text + "'");
+                
+                OSControl.Select(
+                    "WHERE nom LIKE '%" + txtRecherche.Text +
+                    "%' OR versionOS LIKE '%" + txtRecherche.Text +
+                    "%' OR codeOS LIKE '%" + txtRecherche.Text +
+                    "%' OR edition LIKE '%" + txtRecherche.Text + "%'");
 
                 foreach (OS os in OSControl.ListOS)
                 {
@@ -104,22 +105,53 @@ namespace Texcel
             }             
             else if (radPlateforme.Checked)
             {
-                listView1.Columns.AddRange(new ColumnHeader[] { colCodePlateforme, colNom, colConfiguration, colTypeConfig, colCodeOS });
-                plateformeControl.Select("");
-            }
-        }
+                plateformeControl.Select(
+                    "WHERE nom LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR configuration LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR typeConfiguration LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR codeOS LIKE '%" + txtRecherche.Text + "%' ");
 
-        private void AjoutItemList()
-        {
-            foreach (OS os in OSControl.ListOS)
-            {
-                listView1.Items.Add(new ListViewItem(new string[]
+                foreach(Plateforme plateforme in plateformeControl.ListPlateforme)
                 {
-                        os.Code,
-                        os.Nom,
-                        os.Version,
-                        os.Edition
-                }));
+                    listView1.Items.Add(new ListViewItem(new string[]
+                    {
+                        plateforme.Nom,
+                        plateforme.Configuration,
+                        plateforme.Type,
+                        plateforme.CodeOS
+                    }));
+                }
+            }
+            else if (radJeu.Checked)
+            {
+                jeuControl.Select("");
+            }
+            else
+            {
+                employeControl.Select(
+                    "WHERE matricule LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR nom LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR prenom LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR dateNaissance LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR adresse LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR telResidentiel LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR posteTelephonique LIKE '%" + txtRecherche.Text + "%' " +
+                    "OR titreEmploye LIKE '%" + txtRecherche.Text + "%' ");
+
+                foreach(Employe employe in employeControl.ListEmploye)
+                {
+                    listView1.Items.Add(new ListViewItem(new string[]
+                    {
+                        employe.Matricule,
+                        employe.Prenom,
+                        employe.Nom,
+                        employe.DateNaissance,
+                        employe.Adresse,
+                        employe.TelResidentiel,
+                        employe.PosteTelephonique,
+                        employe.CategorieEmploi
+                    }));
+                }
             }
         }
 
@@ -133,14 +165,16 @@ namespace Texcel
             switch (radio.Name)
             {
                 case "radOS":
-                    
+                    listView1.Columns.AddRange(new ColumnHeader[] { colCodeOS, colNom, colVersion, colEdition });
                     break;
                 case "radPlateforme":
+                    listView1.Columns.AddRange(new ColumnHeader[] { colNom, colConfiguration, colTypeConfig, colCodeOS });
                     break;
                 case "radJeu":
                     listView1.Columns.AddRange(new ColumnHeader[] { colCodeJeu, colNom, colDeveloppeur, colDescription, colConfigMin, colClassification, colGenre, colTheme });
                     break;
                 case "radEmploye":
+                    listView1.Columns.AddRange(new ColumnHeader[] { colMatricule, colPrenom, colNom, colDdn, colAdresse, colTelResidentiel, colPosteTel, colTitreEmploi });
                     break;
             }
         }

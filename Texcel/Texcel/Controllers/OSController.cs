@@ -28,7 +28,7 @@ namespace Texcel
             OS os;
 
             listOS.Clear();
-            foreach (object[] selection in Provider.CommandeLecture("SELECT * FROM tblOS " + where))
+            foreach (object[] selection in Provider.CommandeLecture("SELECT * FROM tblOS " + where))//Peut-être mettre le where la dedans.
             {
                 os = new OS(selection[0].ToString(), selection[1].ToString(), selection[2].ToString(), selection[3].ToString());
                 listOS.Add(os);
