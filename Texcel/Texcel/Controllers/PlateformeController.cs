@@ -15,6 +15,14 @@ namespace Texcel
             Select("");
         }
 
+        public bool VerifierChampsPlateforme(string champ)
+        {
+            if ((champ.Length > 0) && (champ.Length <= 50))
+                return true;
+            else
+                return false;
+        }
+
         //Permet de créer une plateforme dans la BD.
         public override void Insert(params object[] champs)
         {

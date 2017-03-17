@@ -15,6 +15,15 @@ namespace Texcel
             Select("");
         }
 
+        //Vérifie les champs du OS.
+        public bool VerifierChampsOS(string champ)
+        {
+            if ((champ.Length > 0) && (champ.Length <= 50))
+                return true;
+            else
+                return false;
+        }
+
         //Permet de créer un OS dans la BD.
         public override void Insert(params object[] champs)
         {

@@ -243,6 +243,16 @@ namespace Texcel
             }
         }
 
+        private void txtBoxFocusChanged(object sender, EventArgs e)
+        {
+            TextBox txtBox = (TextBox)sender;
+
+            if (OSControl.VerifierChampsOS(txtBox.Text))
+                txtBox.BackColor = Color.White;
+            else
+                txtBox.BackColor = Color.Red;
+        }
+
         //Ferme l'application.
         private void frmAdministrateur_FormClosing(object sender, FormClosingEventArgs e)
         {
