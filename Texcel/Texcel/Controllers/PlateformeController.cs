@@ -9,7 +9,6 @@ namespace Texcel
     class PlateformeController : Controller
     {
         List<Plateforme> listPlateforme = new List<Plateforme>();
-        Plateforme plateforme;
 
         public PlateformeController() : base()
         {
@@ -22,14 +21,13 @@ namespace Texcel
             OS os = (OS)champs[3];
             Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], os.Code);
 
-            //plateforme = new Plateforme(champs[0].ToString(), champs[1].ToString(), champs[2].ToString(), os.Code);
-            //listPlateforme.Add(plateforme);
+            listPlateforme.Add(new Plateforme(champs[0].ToString(), champs[1].ToString(), champs[2].ToString(), os.Code));
         }
 
         //Permet de récupérer toutes les plateformes de la BD.
         public override void Select(string where)
         {
-            
+            Plateforme plateforme;
 
             listPlateforme.Clear();
             foreach (object[] plateformeSelectionnee in Provider.CommandeLecture("SELECT * FROM tblPlateforme " + where))

@@ -19,7 +19,8 @@ namespace Texcel
         public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO tblOS VALUES(@0, @1, @2, @3);", champs[0], champs[1], champs[2], champs[3]);
-            //Ajouter le OS dans la liste de OS.s
+
+            listOS.Add(new OS(champs[0].ToString(), champs[1].ToString(), champs[2].ToString(), champs[3].ToString()));
         }
 
         //Permet de récupérer tous les OS de la BD.
