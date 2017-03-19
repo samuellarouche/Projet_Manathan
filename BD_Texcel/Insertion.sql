@@ -29,7 +29,7 @@ GO
 INSERT dbo.tblTest (nom, descriptionTest, codeType) VALUES ('nom','desc','1')
 GO
 -- Insertion dans tblEmploye
-INSERT dbo.tblEmploye (matricule, nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, titreEmploye, categorieEmploye, motPasse) VALUES ('matricule','nom','prenom','2005-04-8','adresse','telRes','12345','titreEmploye','catEmploye','motPasse')
+INSERT dbo.tblEmploye (matricule, nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, titreEmploye, motPasse) VALUES ('matricule','nom','prenom','2005-04-8','adresse','telRes','12345','Administrateur','motPasse')
 GO
 -- Insertion dans tblEquipe
 INSERT dbo.tblEquipe (matricule) VALUES ('matricule')

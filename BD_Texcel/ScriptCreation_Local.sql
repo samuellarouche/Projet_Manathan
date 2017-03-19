@@ -22,19 +22,20 @@ GO
 IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblEmploye') IS NOT NULL
 DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEmploye
 
-CREATE TABLE tblEmploye		(matricule				varchar(200)		NOT NULL,
+CREATE TABLE tblEmploye		(matricule				varchar(200)	UNIQUE	NOT NULL,
 							 PRIMARY KEY([matricule]),
-							 nom					varchar(50)			NOT NULL,
-							 prenom					varchar(50)			NOT NULL,
-							 dateNaissance			date				NOT NULL,
-							 adresse				varchar(50)			NOT NULL,
-							 telResidentiel			varchar(50)			NOT NULL,
-							 posteTelephonique		varchar(5)			NOT NULL,
-							 titreEmploye			varchar(50)			NOT NULL,
-							 categorieEmploye		varchar(50)			NOT NULL,
-							 motPasse				varchar(50)			NOT NULL
+							 nom					varchar(50)				NOT NULL,
+							 prenom					varchar(50)				NOT NULL,
+							 dateNaissance			date					NOT NULL,
+							 adresse				varchar(50)				NOT NULL,
+							 telResidentiel			varchar(50)				NOT NULL,
+							 posteTelephonique		varchar(5)				NOT NULL,
+							 titreEmploye			varchar(50)				NOT NULL,
+							 motPasse				varchar(50)				NOT NULL,
+							 tagEmploye				varchar(505)			NULL
 							);
 GO
+
 
 
 PRINT('Création de la table tblEquipe')
@@ -82,9 +83,10 @@ CREATE TABLE tblJeux		(codeJeux			int IDENTITY(1,1)		NOT NULL,
 							 developpeur		varchar(50)		NOT NULL,
 							 descriptionJeu		varchar(50)		NOT NULL,
 							 configMin			varchar(50)		NOT NULL,
-							 codeclassification	int		NOT NULL,
-							 codeGenre	int				NOT NULL,
-							 codeTheme	int				NOT NULL
+							 codeclassification	int				NOT NULL,
+							 codeGenre	int						NOT NULL,
+							 codeTheme	int						NOT NULL,
+							 tagJeux			varchar(200)	NULL
 							);
 GO
 
@@ -100,7 +102,8 @@ CREATE TABLE tblOS		(nom					varchar(50)				NOT NULL,
 						 versionOS				varchar(50)				NOT NULL,
 						 codeOS					varchar(50)				NOT NULL,
 						 PRIMARY KEY(codeOS),
-						 edition				varchar(50)				NOT NULL		
+						 edition				varchar(50)				NOT NULL,
+						 tagOS					varchar(200)			NULL		
 						);
 GO
 
@@ -118,9 +121,10 @@ CREATE TABLE tblPlateforme		(
 								 nom							varchar(50)						NOT NULL,
 								 configuration					varchar(50)						NOT NULL,
 								 typeConfiguration				varchar(50)						NOT NULL,
-								 codePlateforme					int IDENTITY(1,1)						NOT NULL,
+								 codePlateforme					int IDENTITY(1,1)				NOT NULL,
 								 PRIMARY KEY(codePlateforme),
-								 codeOS							varchar(50)						NOT NULL
+								 codeOS							varchar(50)						NOT NULL,
+								 tagPlateforme					varchar(200)						NULL
 								);
 GO
 
@@ -219,7 +223,8 @@ CREATE TABLE tblTheme			(
 								 codeTheme	int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeTheme),
 								 nomTheme	varchar(50)	NOT NULL,
-								 descriptionTheme	varchar(50) NULL
+								 descriptionTheme	varchar(50) NULL,
+								 tagTheme			varchar(150)	NULL
 								);
 GO 
 
@@ -234,8 +239,9 @@ DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblGenre
 CREATE TABLE tblGenre			(
 								 codeGenre	int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeGenre),
-								 nomGenre	varchar(50)	NOT NULL,
-								 descriptionGenre	varchar(50) NULL
+								 nomGenre	varchar(50)			NOT NULL,
+								 descriptionGenre	varchar(50)		NULL,
+								 tagGenre			varchar(150)	NULL
 
 								);
 GO 
@@ -251,7 +257,8 @@ DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblClassification
 CREATE TABLE tblClassification			(
 										 codeclassification	int IDENTITY(1,1)	NOT NULL,
 										 PRIMARY KEY(codeclassification),
-										 nomClassification	varchar(50)	NOT NULL,
-										 descriptionClassification	varchar(50) NULL
+										 nomClassification	varchar(50)			NOT NULL,
+										 descriptionClassification	varchar(50)		NULL,
+										 tagClassification		varchar(150)		NULL
 										);
 GO 
