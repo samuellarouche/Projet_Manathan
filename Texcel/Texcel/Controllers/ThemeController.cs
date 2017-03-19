@@ -17,7 +17,7 @@ namespace Texcel
 
         public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO tblTheme VALUES(@0, @1)", champs[0], champs[1]);
+            Provider.ExecuterCommande("INSERT INTO vueTheme (nomTheme, descriptionTheme) VALUES(@0, @1)", champs[0], champs[1]);
         }
 
         public override void Select(string where)
@@ -25,7 +25,7 @@ namespace Texcel
             Theme theme;
 
             listTheme.Clear();
-            foreach (object[] themeSelectionne in Provider.CommandeLecture("SELECT * FROM tblTheme " + where))
+            foreach (object[] themeSelectionne in Provider.CommandeLecture("SELECT * FROM vueTheme " + where))
             {
                 theme = new Theme(Convert.ToInt32(themeSelectionne[0]), themeSelectionne[1].ToString(), themeSelectionne[2].ToString());
                 listTheme.Add(theme);

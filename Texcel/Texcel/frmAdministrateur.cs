@@ -87,9 +87,9 @@ namespace Texcel
                            "OR developpeur LIKE '%" + txtRecherche.Text + "%' " +
                            "OR descriptionJeu LIKE '%" + txtRecherche.Text + "%' " +
                            "OR configMin LIKE '%" + txtRecherche.Text + "%' " +
-                           "OR codeclassification LIKE '%" + txtRecherche.Text + "%' " +
-                           "OR codeGenre LIKE '%" + txtRecherche.Text + "%' " +
-                           "OR codeTheme LIKE '%" + txtRecherche.Text + "%' ";
+                           "OR nomGenre LIKE '%" + txtRecherche.Text + "%' " +
+                           "OR nomClassification LIKE '%" + txtRecherche.Text + "%' " +
+                           "OR nomTheme LIKE '%" + txtRecherche.Text + "%' ";
 
             conditionEmploye = "WHERE matricule LIKE '%" + txtRecherche.Text + "%' " +
                                "OR nom LIKE '%" + txtRecherche.Text + "%' " +
@@ -191,7 +191,7 @@ namespace Texcel
                     listView1.Columns.AddRange(new ColumnHeader[] { colNom, colConfiguration, colTypeConfig, colCodeOS });
                     break;
                 case "radJeu":
-                    listView1.Columns.AddRange(new ColumnHeader[] { colNom, colDeveloppeur, colDescription, colConfigMin, colClassification, colGenre, colTheme });
+                    listView1.Columns.AddRange(new ColumnHeader[] { colNom, colDeveloppeur, colDescription, colConfigMin, colGenre, colClassification, colTheme });
                     break;
                 case "radEmploye":
                     listView1.Columns.AddRange(new ColumnHeader[] { colMatricule, colPrenom, colNom, colDdn, colAdresse, colTelResidentiel, colPosteTel, colTitreEmploi });

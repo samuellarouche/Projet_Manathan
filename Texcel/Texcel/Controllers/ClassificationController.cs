@@ -17,7 +17,7 @@ namespace Texcel
 
         public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO tblClassification VALUES(@0, @1)", champs[0], champs[1]);
+            Provider.ExecuterCommande("INSERT INTO tblClassification (nomClassification, descriptionClassification) VALUES(@0, @1)", champs[0], champs[1]);
         }
 
         public override void Select(string where)

@@ -12,24 +12,34 @@ namespace Texcel
 {
     public partial class frmConnexion : Form
     {
-        ConnectController connect = new ConnectController();
+        EmployeController employeControl = new EmployeController();
+
         public frmConnexion()
         {
             InitializeComponent();
         }
 
         private void btnConnecter_Click(object sender, EventArgs e)
-        {          
+        {
             frmAdministrateur admin = new frmAdministrateur();
-            //if (connect.Connexion(txtNomUtilisateur.Text))//Reste a checker le type de compte.
-            //{
-                this.Hide();
-                admin.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Fuck you");
-            //}
+            employeControl.Select("WHERE matricule = '" + txtNomUtilisateur.Text + "' AND motPasse = '" + txtPassword.Text + "'");
+
+            if (employeControl.ListEmploye.Count > 0)//Reste a checker le type de compte.
+            {
+                if (employeControl.ListEmploye[0].CategorieEmploi == "Administrateur")
+                {
+                    this.Hide();
+                    admin.Show();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fuck you");
+            }
         }
     }
 }

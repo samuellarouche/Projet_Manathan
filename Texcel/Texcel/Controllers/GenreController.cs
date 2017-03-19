@@ -17,7 +17,7 @@ namespace Texcel
 
         public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO tblGenre VALUES(@0, @1)", champs[0], champs[1]);
+            Provider.ExecuterCommande("INSERT INTO vueGenre (nomGenre, descriptionGenre) VALUES(@0, @1)", champs[0], champs[1]);
             //Trouver un moyen pour ajouter les genres dans la liste lors de l'insertion.
             //Trouver un moyen pour afficher les noms au lieu des codes dans la listView.
         }
@@ -27,7 +27,7 @@ namespace Texcel
             Genre genre;
 
             listGenre.Clear();
-            foreach (object[] genreSelectionne in Provider.CommandeLecture("SELECT * FROM tblGenre " + where))
+            foreach (object[] genreSelectionne in Provider.CommandeLecture("SELECT * FROM vueGenre " + where))
             {
                 genre = new Genre(Convert.ToInt32(genreSelectionne[0]), genreSelectionne[1].ToString(), genreSelectionne[2].ToString());
                 listGenre.Add(genre);

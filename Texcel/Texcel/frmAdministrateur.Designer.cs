@@ -46,6 +46,11 @@
             this.btnAjouter = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.lstCategorie = new System.Windows.Forms.ComboBox();
+            this.grpThemeGenreClass = new System.Windows.Forms.GroupBox();
+            this.txtDescThemeGenreClass = new System.Windows.Forms.RichTextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtNomThemeGenreClass = new System.Windows.Forms.TextBox();
             this.grpPlateforme = new System.Windows.Forms.GroupBox();
             this.lstOS = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -102,10 +107,6 @@
             this.txtNomEmploye = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtPrenomEmploye = new System.Windows.Forms.TextBox();
-            this.grpThemeGenreClass = new System.Windows.Forms.GroupBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.txtNomThemeGenreClass = new System.Windows.Forms.TextBox();
             this.colConfiguration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTypeConfig = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDeveloppeur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -121,16 +122,15 @@
             this.colTelResidentiel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPosteTel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTitreEmploi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtDescThemeGenreClass = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabRecherche.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabAjout.SuspendLayout();
+            this.grpThemeGenreClass.SuspendLayout();
             this.grpPlateforme.SuspendLayout();
             this.grpOS.SuspendLayout();
             this.grpJeu.SuspendLayout();
             this.grpEmploye.SuspendLayout();
-            this.grpThemeGenreClass.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -297,7 +297,7 @@
             this.tabAjout.Padding = new System.Windows.Forms.Padding(4);
             this.tabAjout.Size = new System.Drawing.Size(723, 492);
             this.tabAjout.TabIndex = 1;
-            this.tabAjout.Text = "s";
+            this.tabAjout.Text = "Ajout";
             this.tabAjout.UseVisualStyleBackColor = true;
             // 
             // btnAjouter
@@ -339,6 +339,62 @@
             this.lstCategorie.Size = new System.Drawing.Size(264, 24);
             this.lstCategorie.TabIndex = 0;
             this.lstCategorie.SelectedIndexChanged += new System.EventHandler(this.LstCategorie_SelectedIndexChanged);
+            // 
+            // grpThemeGenreClass
+            // 
+            this.grpThemeGenreClass.Controls.Add(this.txtDescThemeGenreClass);
+            this.grpThemeGenreClass.Controls.Add(this.label28);
+            this.grpThemeGenreClass.Controls.Add(this.label31);
+            this.grpThemeGenreClass.Controls.Add(this.txtNomThemeGenreClass);
+            this.grpThemeGenreClass.Enabled = false;
+            this.grpThemeGenreClass.Location = new System.Drawing.Point(68, 64);
+            this.grpThemeGenreClass.Margin = new System.Windows.Forms.Padding(4);
+            this.grpThemeGenreClass.Name = "grpThemeGenreClass";
+            this.grpThemeGenreClass.Padding = new System.Windows.Forms.Padding(4);
+            this.grpThemeGenreClass.Size = new System.Drawing.Size(579, 358);
+            this.grpThemeGenreClass.TabIndex = 26;
+            this.grpThemeGenreClass.TabStop = false;
+            this.grpThemeGenreClass.Text = "Thème";
+            this.grpThemeGenreClass.Visible = false;
+            // 
+            // txtDescThemeGenreClass
+            // 
+            this.txtDescThemeGenreClass.Location = new System.Drawing.Point(155, 169);
+            this.txtDescThemeGenreClass.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescThemeGenreClass.Name = "txtDescThemeGenreClass";
+            this.txtDescThemeGenreClass.Size = new System.Drawing.Size(264, 117);
+            this.txtDescThemeGenreClass.TabIndex = 4;
+            this.txtDescThemeGenreClass.Text = "";
+            this.txtDescThemeGenreClass.LostFocus += new System.EventHandler(this.txtBoxFocusChanged);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(247, 145);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(79, 17);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Description";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(265, 58);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(37, 17);
+            this.label31.TabIndex = 1;
+            this.label31.Text = "Nom";
+            // 
+            // txtNomThemeGenreClass
+            // 
+            this.txtNomThemeGenreClass.Location = new System.Drawing.Point(155, 78);
+            this.txtNomThemeGenreClass.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNomThemeGenreClass.Name = "txtNomThemeGenreClass";
+            this.txtNomThemeGenreClass.Size = new System.Drawing.Size(264, 22);
+            this.txtNomThemeGenreClass.TabIndex = 0;
+            this.txtNomThemeGenreClass.LostFocus += new System.EventHandler(this.txtBoxFocusChanged);
             // 
             // grpPlateforme
             // 
@@ -942,52 +998,6 @@
             this.txtPrenomEmploye.Size = new System.Drawing.Size(264, 22);
             this.txtPrenomEmploye.TabIndex = 0;
             // 
-            // grpThemeGenreClass
-            // 
-            this.grpThemeGenreClass.Controls.Add(this.txtDescThemeGenreClass);
-            this.grpThemeGenreClass.Controls.Add(this.label28);
-            this.grpThemeGenreClass.Controls.Add(this.label31);
-            this.grpThemeGenreClass.Controls.Add(this.txtNomThemeGenreClass);
-            this.grpThemeGenreClass.Enabled = false;
-            this.grpThemeGenreClass.Location = new System.Drawing.Point(68, 64);
-            this.grpThemeGenreClass.Margin = new System.Windows.Forms.Padding(4);
-            this.grpThemeGenreClass.Name = "grpThemeGenreClass";
-            this.grpThemeGenreClass.Padding = new System.Windows.Forms.Padding(4);
-            this.grpThemeGenreClass.Size = new System.Drawing.Size(579, 358);
-            this.grpThemeGenreClass.TabIndex = 26;
-            this.grpThemeGenreClass.TabStop = false;
-            this.grpThemeGenreClass.Text = "Thème";
-            this.grpThemeGenreClass.Visible = false;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(247, 145);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(79, 17);
-            this.label28.TabIndex = 3;
-            this.label28.Text = "Description";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(265, 58);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(37, 17);
-            this.label31.TabIndex = 1;
-            this.label31.Text = "Nom";
-            // 
-            // txtNomThemeGenreClass
-            // 
-            this.txtNomThemeGenreClass.Location = new System.Drawing.Point(155, 78);
-            this.txtNomThemeGenreClass.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNomThemeGenreClass.Name = "txtNomThemeGenreClass";
-            this.txtNomThemeGenreClass.Size = new System.Drawing.Size(264, 22);
-            this.txtNomThemeGenreClass.TabIndex = 0;
-            this.txtNomThemeGenreClass.LostFocus += new System.EventHandler(this.txtBoxFocusChanged);
-            // 
             // colConfiguration
             // 
             this.colConfiguration.Text = "Configuration";
@@ -1006,7 +1016,7 @@
             // colDescription
             // 
             this.colDescription.Text = "Description";
-            this.colDescription.Width = 100;
+            this.colDescription.Width = 120;
             // 
             // colConfigMin
             // 
@@ -1031,6 +1041,7 @@
             // colMatricule
             // 
             this.colMatricule.Text = "Matricule";
+            this.colMatricule.Width = 100;
             // 
             // colPrenom
             // 
@@ -1040,7 +1051,7 @@
             // colDdn
             // 
             this.colDdn.Text = "Date de naissance";
-            this.colDdn.Width = 120;
+            this.colDdn.Width = 140;
             // 
             // colAdresse
             // 
@@ -1050,27 +1061,17 @@
             // colTelResidentiel
             // 
             this.colTelResidentiel.Text = "Téléphone Résidentiel";
-            this.colTelResidentiel.Width = 130;
+            this.colTelResidentiel.Width = 160;
             // 
             // colPosteTel
             // 
             this.colPosteTel.Text = "Poste Téléphonique";
-            this.colPosteTel.Width = 120;
+            this.colPosteTel.Width = 140;
             // 
             // colTitreEmploi
             // 
             this.colTitreEmploi.Text = "Titre";
-            this.colTitreEmploi.Width = 80;
-            // 
-            // txtDescThemeGenreClass
-            // 
-            this.txtDescThemeGenreClass.Location = new System.Drawing.Point(155, 169);
-            this.txtDescThemeGenreClass.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescThemeGenreClass.Name = "txtDescThemeGenreClass";
-            this.txtDescThemeGenreClass.Size = new System.Drawing.Size(264, 117);
-            this.txtDescThemeGenreClass.TabIndex = 4;
-            this.txtDescThemeGenreClass.Text = "";
-            this.txtDescThemeGenreClass.LostFocus += new System.EventHandler(this.txtBoxFocusChanged);
+            this.colTitreEmploi.Width = 120;
             // 
             // frmAdministrateur
             // 
@@ -1090,6 +1091,8 @@
             this.groupBox1.PerformLayout();
             this.tabAjout.ResumeLayout(false);
             this.tabAjout.PerformLayout();
+            this.grpThemeGenreClass.ResumeLayout(false);
+            this.grpThemeGenreClass.PerformLayout();
             this.grpPlateforme.ResumeLayout(false);
             this.grpPlateforme.PerformLayout();
             this.grpOS.ResumeLayout(false);
@@ -1098,8 +1101,6 @@
             this.grpJeu.PerformLayout();
             this.grpEmploye.ResumeLayout(false);
             this.grpEmploye.PerformLayout();
-            this.grpThemeGenreClass.ResumeLayout(false);
-            this.grpThemeGenreClass.PerformLayout();
             this.ResumeLayout(false);
 
         }
