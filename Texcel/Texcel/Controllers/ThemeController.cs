@@ -15,11 +15,13 @@ namespace Texcel
             Select("");
         }
 
+        //Permet de créer un thème dans la BD.
         public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO vueTheme (nomTheme, descriptionTheme) VALUES(@0, @1)", champs[0], champs[1]);
         }
 
+        //Permet de récupérer tous les thèmes de la BD.
         public override void Select(string where)
         {
             Theme theme;

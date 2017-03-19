@@ -89,7 +89,7 @@ namespace Texcel
         //Recherche les éléments dans la BD et les affiche dans la ListView.
         private void btnRechercher_Click(object sender, EventArgs e)
         {
-            //Mettre condition dans les controller.
+            //Penser à peut-être mettre les conditions dans les controllers.
             string conditionOS, conditionPlateforme, conditionJeu, conditionEmploye;
             conditionOS = "WHERE nom LIKE '%" + txtRecherche.Text + "%' " +
                           "OR versionOS LIKE '%" + txtRecherche.Text + "%' " +

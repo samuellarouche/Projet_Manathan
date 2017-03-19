@@ -15,6 +15,7 @@ namespace Texcel
             Select("");
         }
 
+        //Permet de créer un genre dans la BD.
         public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO vueGenre (nomGenre, descriptionGenre) VALUES(@0, @1)", champs[0], champs[1]);
@@ -22,6 +23,7 @@ namespace Texcel
             //Trouver un moyen pour afficher les noms au lieu des codes dans la listView.
         }
 
+        //Permet de récupérer tous les genres de la BD.
         public override void Select(string where)
         {
             Genre genre;

@@ -20,12 +20,14 @@ namespace Texcel
             get { return listEmploye; }
         }
 
+        //Permet de créer un employé dans la BD.
         public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO vueEmploye (matricule, nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, titreEmploye, motPasse) VALUES (@0, @1, @2, @3, @4, @5, @6, @7, @8)",
                 champs[0], champs[1], champs[2], champs[3], champs[4], champs[5], champs[6], champs[7], champs[8]);//Deux champ 8 car champ de trop dans la BD. A ENLEVER.
         }
 
+        //Permet de récupérer tous les employés de la BD.
         public override void Select(string where)
         {
             Employe employe;
