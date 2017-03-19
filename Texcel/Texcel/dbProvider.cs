@@ -18,7 +18,7 @@ namespace Texcel
         //Éxecute une commande SQL avec paramètres.
         public void ExecuterCommande(string script, params object[] valeurs)
         {           
-            using(SqlConnection connexion = new SqlConnection("Server = deptinfo420; Database = BD_Texcel_SAM_FRAN; User Id = larsa1432920; Password = 19960927;"))
+            using(SqlConnection connexion = new SqlConnection("Server = deptinfo420; Database = BD_Texcel_SAM_FRAN; User Id = larsa1432920;Password = 19960927;"))
             {
                 connexion.Open();
 
@@ -38,7 +38,7 @@ namespace Texcel
         {
             List<object[]> donnees = new List<object[]>();           
 
-            using (SqlConnection connexion = new SqlConnection("Server = deptinfo420; Database = BD_Texcel_SAM_FRAN; User Id = larsa1432920;Password = 19960927;"/*"Server=localhost\\SQLEXPRESS;Database=BD_Texcel;Trusted_Connection=True;"*/))
+            using (SqlConnection connexion = new SqlConnection("Server = deptinfo420; Database = BD_Texcel_SAM_FRAN; User Id = larsa1432920;Password = 19960927;"/*"Server=localhost\\SQLEXPRESS;Database=BD_Texcel_SAM_FRAN;Trusted_Connection=True;"*/))
             {
                 connexion.Open();
 
@@ -46,7 +46,7 @@ namespace Texcel
 
                 using (SqlDataReader reader = commande.ExecuteReader())
                 {
-                    object[] ligne = new object[reader.FieldCount];
+                    object[] ligne = new object[reader.FieldCount];//Tableau d'objet du nombre de champs.
 
                     while (reader.Read())
                     {

@@ -8,10 +8,9 @@ namespace Texcel
 {
     class Employe
     {
-        string nom, prenom, dateNaissance, adresse, telResidentiel, matricule, categorieEmploi;
-        int posteTelephonique;
+        string nom, prenom, dateNaissance, adresse, telResidentiel, matricule, categorieEmploi, posteTelephonique;//Doit avoir un mot de passe.
 
-        public Employe(string nom, string prenom, string dateNaissance, string adresse, string telResidentiel, int posteTelephonique, string matricule, string categorieEmploi)
+        public Employe(string nom, string prenom, string dateNaissance, string adresse, string telResidentiel, string posteTelephonique, string matricule, string categorieEmploi)
         {
             this.nom = nom;
             this.prenom = prenom;
@@ -56,6 +55,11 @@ namespace Texcel
         public string TelResidentiel
         {
             get { return telResidentiel; }
+        }
+
+        public string PosteTelephonique
+        {
+            get { return posteTelephonique; }
         }
     }
 }

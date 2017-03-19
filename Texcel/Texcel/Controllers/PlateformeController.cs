@@ -12,23 +12,35 @@ namespace Texcel
 
         public PlateformeController() : base()
         {
-            Select();
+            Select("");
+        }
+
+        public bool VerifierChampsPlateforme(string champ)
+        {
+            if ((champ.Length > 0) && (champ.Length <= 50))
+                return true;
+            else
+                return false;
         }
 
         //Permet de créer une plateforme dans la BD.
-        public override void Insert(params string[] champs)
+        public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO tblPlateforme VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], champs[3]);//Manque OS pas encore dans la BD
+            OS os = (OS)champs[3];
+            Provider.ExecuterCommande("INSERT INTO vuePlateforme (nom, configuration, typeConfiguration, codeOS) VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], os.Code);
+
+            listPlateforme.Add(new Plateforme(champs[0].ToString(), champs[1].ToString(), champs[2].ToString(), os.Code));
         }
 
         //Permet de récupérer toutes les plateformes de la BD.
-        public override void Select()
+        public override void Select(string where)
         {
             Plateforme plateforme;
 
-            foreach(object[] selection in Provider.CommandeLecture("SELECT * FROM tblPlateforme"))
+            listPlateforme.Clear();
+            foreach (object[] plateformeSelectionnee in Provider.CommandeLecture("SELECT * FROM vuePlateforme " + where))
             {
-                plateforme = new Plateforme(selection[0].ToString(), selection[1].ToString(), selection[2].ToString(), null);
+                plateforme = new Plateforme(plateformeSelectionnee[0].ToString(), plateformeSelectionnee[1].ToString(), plateformeSelectionnee[2].ToString(), plateformeSelectionnee[4].ToString());
                 listPlateforme.Add(plateforme);
             }
         }

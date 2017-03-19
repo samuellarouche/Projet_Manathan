@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ConnectController.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\EmployeController.cs" />
+    <Compile Include="Controllers\ClassificationController.cs" />
+    <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Employes\Administrateur.cs" />
     <Compile Include="Employes\Chef.cs" />
     <Compile Include="Controllers\JeuController.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Employes\Testeur.cs" />
     <Compile Include="Jeux\Theme.cs" />
     <Compile Include="Tests\TypeTest.cs" />
+    <Compile Include="Controllers\ThemeController.cs" />
     <EmbeddedResource Include="frmConnexion.resx">
       <DependentUpon>frmConnexion.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,16 +8,18 @@ namespace Texcel
 {
     class Jeu
     {
-        string nom, developpeur, description, configMin;
-        Plateforme plateforme;
+        string nom, developpeur, description, configMin, codePlateforme, codeClassification, codeTheme, codeGenre;
 
-        public Jeu(string nom, string developpeur, string description, string configMin, Plateforme plateforme)
+        public Jeu(string nom, string developpeur, string description, string configMin, string codeClassification, string codeGenre, string codeTheme)//Récupérer le code de plateforme à l'aide de la table d'intersection.
         {
             this.nom = nom;
             this.developpeur = developpeur;
             this.description = description;
             this.configMin = configMin;
-            this.plateforme = plateforme;
+            //this.codePlateforme = codePlateforme;
+            this.codeClassification = codeClassification;
+            this.codeTheme = codeTheme;
+            this.codeGenre = codeGenre;
         }
 
         public string Nom
@@ -40,9 +42,24 @@ namespace Texcel
             get { return configMin; }
         }
 
-        public Plateforme Plateforme
+        //public string CodePlateforme
+        //{
+        //    get { return codePlateforme; }
+        //}
+
+        public string CodeClassification
         {
-            get { return plateforme; }
+            get { return codeClassification; }
+        }
+
+        public string CodeGenre
+        {
+            get { return codeGenre; }
+        }
+
+        public string CodeTheme
+        {
+            get { return codeTheme; }
         }
     }
 }

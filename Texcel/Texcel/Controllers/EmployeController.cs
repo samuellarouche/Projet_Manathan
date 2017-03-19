@@ -20,36 +20,24 @@ namespace Texcel
             get { return listEmploye; }
         }
 
-        //public void CreerEmploye(string nom, string prenom, string dateNaissance, string adresse, string telResidentiel, int posteTelephonique, string matricule, string categorieEmploi)
-        //{
-        //    switch (categorieEmploi)
-        //    {
-        //        case "Chef":
-        //            employe = new Chef(nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, matricule, categorieEmploi);
-        //            break;
-        //        case "Directeur":
-        //            employe = new Directeur(nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, matricule, categorieEmploi);
-        //            break;
-        //        case "Testeur":
-        //            employe = new Testeur(nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, matricule, categorieEmploi);
-        //            break;
-        //        case "Administrateur":
-        //            employe = new Administrateur(nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, matricule, categorieEmploi);
-        //            break;
-        //    }
-
-        //    listEmploye.Add(employe);
-        //}
-
-        public override void Insert(params string[] champs)
+        public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO tblEmploye VALUES (@0, @1, @2, @3, @4, @5, @6)",
-                champs[0], champs[1], champs[2], champs[3], champs[4], champs[5], champs[6]);
+            Provider.ExecuterCommande("INSERT INTO vueEmploye (matricule, nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, titreEmploye, motPasse) VALUES (@0, @1, @2, @3, @4, @5, @6, @7, @8)",
+                champs[0], champs[1], champs[2], champs[3], champs[4], champs[5], champs[6], champs[7], champs[8]);//Deux champ 8 car champ de trop dans la BD. A ENLEVER.
         }
 
-        public override void Select()
+        public override void Select(string where)
         {
-            throw new NotImplementedException();
+            Employe employe;
+
+            listEmploye.Clear();
+            foreach(object[] employeSelectionne in Provider.CommandeLecture("SELECT * FROM vueEmploye " + where))
+            {
+                employe = new Employe(employeSelectionne[1].ToString(), employeSelectionne[2].ToString(), employeSelectionne[3].ToString(), employeSelectionne[4].ToString(),
+                    employeSelectionne[5].ToString(), employeSelectionne[6].ToString(), employeSelectionne[0].ToString(), employeSelectionne[7].ToString());
+
+                listEmploye.Add(employe);
+            }
         }
     }
 }
