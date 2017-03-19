@@ -243,6 +243,7 @@ namespace Texcel
             }
         }
 
+        //Modifie la couleur des textboxes.
         private void txtBoxFocusChanged(object sender, EventArgs e)
         {
             TextBox txtBox = (TextBox)sender;
