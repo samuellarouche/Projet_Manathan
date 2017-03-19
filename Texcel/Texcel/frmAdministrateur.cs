@@ -246,12 +246,12 @@ namespace Texcel
         //Modifie la couleur des textboxes.
         private void txtBoxFocusChanged(object sender, EventArgs e)
         {
-            TextBox txtBox = (TextBox)sender;
+            Control champ = (Control)sender;
 
-            if (OSControl.VerifierChampsOS(txtBox.Text))
-                txtBox.BackColor = Color.White;
+            if (OSControl.VerifierChampsOS(champ.Text))
+                errorProvider1.SetError(champ, "Champ invalide");
             else
-                txtBox.BackColor = Color.Red;
+                errorProvider1.Clear();
         }
 
         //Ferme l'application.

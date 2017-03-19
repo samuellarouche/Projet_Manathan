@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabRecherche = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -122,6 +123,7 @@
             this.colTelResidentiel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPosteTel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colTitreEmploi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabRecherche.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -131,6 +133,7 @@
             this.grpOS.SuspendLayout();
             this.grpJeu.SuspendLayout();
             this.grpEmploye.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1073,6 +1076,11 @@
             this.colTitreEmploi.Text = "Titre";
             this.colTitreEmploi.Width = 120;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAdministrateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1101,6 +1109,7 @@
             this.grpJeu.PerformLayout();
             this.grpEmploye.ResumeLayout(false);
             this.grpEmploye.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1201,5 +1210,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox txtNomThemeGenreClass;
         private System.Windows.Forms.RichTextBox txtDescThemeGenreClass;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
