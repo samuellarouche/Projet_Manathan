@@ -90,6 +90,7 @@
     <Compile Include="Jeux\Theme.cs" />
     <Compile Include="Tests\TypeTest.cs" />
     <Compile Include="Controllers\ThemeController.cs" />
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="frmConnexion.resx">
       <DependentUpon>frmConnexion.cs</DependentUpon>
     </EmbeddedResource>

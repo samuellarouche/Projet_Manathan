@@ -25,22 +25,18 @@ namespace Texcel
             frmDirecteur directeur = new frmDirecteur();
             employeControl.Select("WHERE matricule = '" + txtNomUtilisateur.Text + "' AND motPasse = '" + txtPassword.Text + "'");
 
-            if (employeControl.ListEmploye.Count > 0)//Reste a checker le type de compte.
+            if (employeControl.ListEmploye.Count > 0)
             {
-                if (employeControl.ListEmploye[0].CategorieEmploi == "Administrateur")
-                {
-                    this.Hide();
-                    //admin.Show();
-                    directeur.Show();
-                }
-                else
-                {
+                this.Hide();
 
-                }
+                if (employeControl.ListEmploye[0].CategorieEmploi == "Administrateur")                                  
+                    admin.Show();                
+                else                
+                    directeur.Show();               
             }
             else
             {
-                MessageBox.Show("Fuck you");
+                MessageBox.Show("Le matricule ou le mot de passe est incorrect.");
             }
         }
     }

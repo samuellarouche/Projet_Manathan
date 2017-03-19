@@ -16,11 +16,11 @@ namespace Texcel
         PlateformeController plateformeControl = new PlateformeController();
         JeuController jeuControl = new JeuController();
         EmployeController employeControl = new EmployeController();
-
-        //Checker si je les mets tous dans le même controller.
         ThemeController themeControl = new ThemeController();
         GenreController genreControl = new GenreController();
         ClassificationController classificationControl = new ClassificationController();
+
+        Validation validation = new Validation();
 
         public frmAdministrateur()
         {
@@ -40,31 +40,48 @@ namespace Texcel
             switch ((string)lstCategorie.SelectedItem)
             {
                 case "OS":
-                    OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
-                    lstOS.Items.Add(OSControl.ListOS.Last());
+                    if(ValiderTout(grpOS))
+                    {
+                        OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
+                        lstOS.Items.Add(OSControl.ListOS.Last());
+                    }
                     break;
                 case "Plateforme":
-                    plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
-                    lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                    if(ValiderTout(grpPlateforme))
+                    {
+                        plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
+                        lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                    }                   
                     break;
                 case "Jeu":
-                    jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);//Pas encore de plateforme dans la bd.
+                    if(ValiderTout(grpJeu))                    
+                        jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);//Pas encore de plateforme dans la bd.
                     break;
                 case "Employé":
-                    employeControl.Insert(txtMatricule.Text, txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date, txtAdresse.Text, txtTelResidentiel.Text, 
-                    txtPosteTel.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text);
+                    if(ValiderTout(grpEmploye))
+                        employeControl.Insert(txtMatricule.Text, txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date, txtAdresse.Text, txtTelResidentiel.Text, 
+                        txtPosteTel.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text);
                     break;
                 case "Thème":
-                    themeControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
-                    lstTheme.Items.Add(themeControl.ListTheme.Last());
+                    if(ValiderTout(grpThemeGenreClass))
+                    {
+                        themeControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
+                        lstTheme.Items.Add(themeControl.ListTheme.Last());
+                    }                    
                     break;
                 case "Genre":
-                    genreControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
-                    lstGenre.Items.Add(genreControl.ListGenre.Last());
+                    if (ValiderTout(grpThemeGenreClass))
+                    {
+                        genreControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
+                        lstGenre.Items.Add(genreControl.ListGenre.Last());
+                    }                  
                     break;
                 case "Classification":
-                    classificationControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
-                    lstClassification.Items.Add(classificationControl.ListClassification.Last());
+                    if (ValiderTout(grpThemeGenreClass))
+                    {
+                        classificationControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
+                        lstClassification.Items.Add(classificationControl.ListClassification.Last());
+                    }                    
                     break;
             }
         }
@@ -244,15 +261,89 @@ namespace Texcel
             }
         }
 
-        //Modifie la couleur des textboxes.
+        //Génère une erreur sur les champs selon leur vérification lorsqu'ils perdent le focus.
         private void txtBoxFocusChanged(object sender, EventArgs e)
         {
             Control champ = (Control)sender;
 
-            if (OSControl.VerifierChampsOS(champ.Text))
-                errorProvider1.SetError(champ, "");
-            else
-                errorProvider1.SetError(champ, "Champ invalide");          
+            switch(champ.Name)
+            {
+                case "txtMotPasse":
+                    if (validation.VerifierMotPasse(champ.Text))
+                        errorProvider1.SetError(champ, "");
+                    else
+                    {
+                        errorProvider1.SetError(champ, "Champ invalide");
+                        MessageBox.Show("Le mot de passe doit contenir :\nUn minimum de 8 caractères;\nUn maximum de 18 caractères;\nAu moins une majuscule;\nAu moins une minuscule;\nAu moins un chiffre.",
+                            "Mot de passe incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                       
+                    break;
+                case "txtConfirmPasse":
+                    if(validation.ConfirmationMotPasse(txtMotPasse.Text, txtConfirmPasse.Text))
+                        errorProvider1.SetError(champ, "");
+                    else
+                    {
+                        errorProvider1.SetError(champ, "Champ invalide");
+                        MessageBox.Show("Ce champ doit être identique au mot de passe.", "Confirmation du mot de passe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    break;
+                case "txtTelResidentiel":
+                    if (validation.VerifierNoTel(txtTelResidentiel.Text))
+                        errorProvider1.SetError(champ, "");
+                    else                    
+                        errorProvider1.SetError(champ, "Format : (XXX) XXX-XXXX");                  
+                    break;
+                case "txtPosteTel":
+                    if(validation.VerifierPosteTel(txtPosteTel.Text))
+                        errorProvider1.SetError(champ, "");
+                    else
+                        errorProvider1.SetError(champ, "5 chiffres maximum");
+                    break;
+                default:
+                    if (validation.VerifierChampsCommun(champ.Text))
+                        errorProvider1.SetError(champ, "");
+                    else
+                        errorProvider1.SetError(champ, "Champ invalide");
+                    break;
+            }                     
+        }
+
+        //Valide la totalité des champs.
+        private bool ValiderTout(Control groupBox)
+        {
+            bool valide = true;
+
+            foreach(Control champ in groupBox.Controls)
+            {
+                switch (champ.Name)
+                {
+                    case "txtMotPasse":
+                        if (!validation.VerifierMotPasse(champ.Text))
+                            valide = false;
+                        break;
+                    case "txtConfirmPasse":
+                        if (!validation.ConfirmationMotPasse(txtMotPasse.Text, txtConfirmPasse.Text))
+                            valide = false;
+                        break;
+                    case "txtTelResidentiel":
+                        if (!validation.VerifierNoTel(txtTelResidentiel.Text))
+                            valide = false;
+                        break;
+                    case "txtPosteTel":
+                        if (!validation.VerifierPosteTel(txtPosteTel.Text))
+                            valide = false;
+                        break;
+                    default:
+                        if (!validation.VerifierChampsCommun(champ.Text))
+                            valide = false;
+                        break;
+                }
+            }
+
+            if (!valide)
+                MessageBox.Show("Veuillez remplir tous les champs correctement.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return valide;
         }
 
         //Ferme l'application.
