@@ -53,6 +53,12 @@
     <Compile Include="Employes\Administrateur.cs" />
     <Compile Include="Employes\Chef.cs" />
     <Compile Include="Controllers\JeuController.cs" />
+    <Compile Include="frmDirecteur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDirecteur.Designer.cs">
+      <DependentUpon>frmDirecteur.cs</DependentUpon>
+    </Compile>
     <Compile Include="Jeux\Classification.cs" />
     <Compile Include="dbProvider.cs" />
     <Compile Include="Employes\Directeur.cs" />
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdministrateur.resx">
       <DependentUpon>frmAdministrateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDirecteur.resx">
+      <DependentUpon>frmDirecteur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

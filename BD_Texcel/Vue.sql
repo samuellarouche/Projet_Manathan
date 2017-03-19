@@ -28,8 +28,8 @@ SELECT *
 FROM tblPlateforme
 GO
 
-SELECT nom, configuration, typeConfiguration, codePlateforme, codeOS, tagPlateforme,
-CONCAT(nom, configuration, typeConfiguration, codePlateforme, codeOS, tagPlateforme) AS tagPlateforme
+SELECT nom, configuration, typeConfiguration, codePlateforme, codeOS,
+CONCAT(nom, configuration, typeConfiguration, codePlateforme, codeOS) AS tagPlateforme
 FROM vuePlateforme
 
 
@@ -93,11 +93,13 @@ SELECT *
 FROM tblTheme
 GO
 
+GO
 SELECT nomTheme, descriptionTheme,
-CONCAT(nomGenre, descriptionGenre) AS tagTheme
+CONCAT(nomTheme, descriptionTheme) AS tagTheme
 FROM vueTheme
+GO
 
-
+GO
 IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueEquipe') IS NOT NULL
 DROP VIEW vueEquipe
 GO
@@ -105,7 +107,3 @@ CREATE VIEW vueEquipe AS
 SELECT *
 FROM tblEquipe
 GO
-
-SELECT matricule,
-CONCAT(matricule) AS tagEquipe
-FROM vueEquipe

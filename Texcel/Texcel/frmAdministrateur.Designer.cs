@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabRecherche = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpRadioRecherche = new System.Windows.Forms.GroupBox();
             this.radOS = new System.Windows.Forms.RadioButton();
             this.radEmploye = new System.Windows.Forms.RadioButton();
             this.radPlateforme = new System.Windows.Forms.RadioButton();
@@ -126,7 +126,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabRecherche.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpRadioRecherche.SuspendLayout();
             this.tabAjout.SuspendLayout();
             this.grpThemeGenreClass.SuspendLayout();
             this.grpPlateforme.SuspendLayout();
@@ -150,7 +150,7 @@
             // 
             // tabRecherche
             // 
-            this.tabRecherche.Controls.Add(this.groupBox1);
+            this.tabRecherche.Controls.Add(this.grpRadioRecherche);
             this.tabRecherche.Controls.Add(this.listView1);
             this.tabRecherche.Controls.Add(this.btnRechercher);
             this.tabRecherche.Controls.Add(this.txtRecherche);
@@ -163,20 +163,20 @@
             this.tabRecherche.Text = "Recherche";
             this.tabRecherche.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // grpRadioRecherche
             // 
-            this.groupBox1.Controls.Add(this.radOS);
-            this.groupBox1.Controls.Add(this.radEmploye);
-            this.groupBox1.Controls.Add(this.radPlateforme);
-            this.groupBox1.Controls.Add(this.radJeu);
-            this.groupBox1.Location = new System.Drawing.Point(11, 39);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(332, 59);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Catégorie de recherche";
+            this.grpRadioRecherche.Controls.Add(this.radOS);
+            this.grpRadioRecherche.Controls.Add(this.radEmploye);
+            this.grpRadioRecherche.Controls.Add(this.radPlateforme);
+            this.grpRadioRecherche.Controls.Add(this.radJeu);
+            this.grpRadioRecherche.Location = new System.Drawing.Point(11, 39);
+            this.grpRadioRecherche.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpRadioRecherche.Name = "grpRadioRecherche";
+            this.grpRadioRecherche.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpRadioRecherche.Size = new System.Drawing.Size(332, 59);
+            this.grpRadioRecherche.TabIndex = 13;
+            this.grpRadioRecherche.TabStop = false;
+            this.grpRadioRecherche.Text = "Catégorie de recherche";
             // 
             // radOS
             // 
@@ -1095,8 +1095,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabRecherche.ResumeLayout(false);
             this.tabRecherche.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpRadioRecherche.ResumeLayout(false);
+            this.grpRadioRecherche.PerformLayout();
             this.tabAjout.ResumeLayout(false);
             this.tabAjout.PerformLayout();
             this.grpThemeGenreClass.ResumeLayout(false);
@@ -1115,12 +1115,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabRecherche;
         private System.Windows.Forms.Button btnRechercher;
         private System.Windows.Forms.TextBox txtRecherche;
-        private System.Windows.Forms.TabPage tabAjout;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ComboBox lstCategorie;
         private System.Windows.Forms.GroupBox grpJeu;
@@ -1178,7 +1175,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox txtMatricule;
         private System.Windows.Forms.ColumnHeader colNom;
-        private System.Windows.Forms.RadioButton radEmploye;
         private System.Windows.Forms.RadioButton radJeu;
         private System.Windows.Forms.RadioButton radPlateforme;
         private System.Windows.Forms.RadioButton radOS;
@@ -1193,7 +1189,6 @@
         private System.Windows.Forms.ColumnHeader colClassification;
         private System.Windows.Forms.ColumnHeader colGenre;
         private System.Windows.Forms.ColumnHeader colTheme;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtConfirmPasse;
@@ -1211,5 +1206,9 @@
         private System.Windows.Forms.TextBox txtNomThemeGenreClass;
         private System.Windows.Forms.RichTextBox txtDescThemeGenreClass;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        protected System.Windows.Forms.TabPage tabAjout;
+        protected System.Windows.Forms.RadioButton radEmploye;
+        protected System.Windows.Forms.GroupBox grpRadioRecherche;
+        protected System.Windows.Forms.TabControl tabControl1;
     }
 }

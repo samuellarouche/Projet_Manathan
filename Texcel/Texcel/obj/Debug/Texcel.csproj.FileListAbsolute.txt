@@ -18,4 +18,4 @@ C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.Properti
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.csproj.GenerateResource.Cache
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.exe
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.pdb
-C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.csprojResolveAssemblyReference.cache
+C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmDirecteur.resources

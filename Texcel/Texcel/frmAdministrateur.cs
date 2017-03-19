@@ -72,6 +72,7 @@ namespace Texcel
         //Recherche les éléments dans la BD et les affiche dans la ListView.
         private void btnRechercher_Click(object sender, EventArgs e)
         {
+            //Mettre condition dans les controller.
             string conditionOS, conditionPlateforme, conditionJeu, conditionEmploye;
             conditionOS = "WHERE nom LIKE '%" + txtRecherche.Text + "%' " +
                           "OR versionOS LIKE '%" + txtRecherche.Text + "%' " +
@@ -249,9 +250,9 @@ namespace Texcel
             Control champ = (Control)sender;
 
             if (OSControl.VerifierChampsOS(champ.Text))
-                errorProvider1.SetError(champ, "Champ invalide");
+                errorProvider1.SetError(champ, "");
             else
-                errorProvider1.Clear();
+                errorProvider1.SetError(champ, "Champ invalide");          
         }
 
         //Ferme l'application.

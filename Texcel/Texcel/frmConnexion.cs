@@ -22,6 +22,7 @@ namespace Texcel
         private void btnConnecter_Click(object sender, EventArgs e)
         {
             frmAdministrateur admin = new frmAdministrateur();
+            frmDirecteur directeur = new frmDirecteur();
             employeControl.Select("WHERE matricule = '" + txtNomUtilisateur.Text + "' AND motPasse = '" + txtPassword.Text + "'");
 
             if (employeControl.ListEmploye.Count > 0)//Reste a checker le type de compte.
@@ -29,7 +30,8 @@ namespace Texcel
                 if (employeControl.ListEmploye[0].CategorieEmploi == "Administrateur")
                 {
                     this.Hide();
-                    admin.Show();
+                    //admin.Show();
+                    directeur.Show();
                 }
                 else
                 {
