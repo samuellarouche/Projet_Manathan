@@ -61,5 +61,10 @@ namespace Texcel
         {
             get { return posteTelephonique; }
         }
+
+        public override string ToString()
+        {
+            return nom;
+        }
     }
 }

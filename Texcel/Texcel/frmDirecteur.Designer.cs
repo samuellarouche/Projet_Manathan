@@ -30,6 +30,13 @@
         {
             this.tabEquipe = new System.Windows.Forms.TabPage();
             this.grpEquipe = new System.Windows.Forms.GroupBox();
+            this.btnCreerEquipe = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lstTache1 = new System.Windows.Forms.ComboBox();
+            this.lstTache2 = new System.Windows.Forms.ComboBox();
+            this.lstTache3 = new System.Windows.Forms.ComboBox();
+            this.lstTache4 = new System.Windows.Forms.ComboBox();
+            this.lstTache5 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstEmploye1 = new System.Windows.Forms.ComboBox();
             this.lstEmploye2 = new System.Windows.Forms.ComboBox();
@@ -38,19 +45,12 @@
             this.lstEmploye5 = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtNomEquipe = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lstTache1 = new System.Windows.Forms.ComboBox();
-            this.lstTache2 = new System.Windows.Forms.ComboBox();
-            this.lstTache3 = new System.Windows.Forms.ComboBox();
-            this.lstTache4 = new System.Windows.Forms.ComboBox();
-            this.lstTache5 = new System.Windows.Forms.ComboBox();
-            this.btnCreerEquipe = new System.Windows.Forms.Button();
             this.grpRadioRecherche.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabEquipe.SuspendLayout();
             this.grpEquipe.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAjout
@@ -99,6 +99,80 @@
             this.grpEquipe.TabStop = false;
             this.grpEquipe.Text = "Équipe";
             // 
+            // btnCreerEquipe
+            // 
+            this.btnCreerEquipe.Location = new System.Drawing.Point(258, 381);
+            this.btnCreerEquipe.Name = "btnCreerEquipe";
+            this.btnCreerEquipe.Size = new System.Drawing.Size(154, 49);
+            this.btnCreerEquipe.TabIndex = 14;
+            this.btnCreerEquipe.Text = "Créer équipe";
+            this.btnCreerEquipe.UseVisualStyleBackColor = true;
+            this.btnCreerEquipe.Click += new System.EventHandler(this.btnCreerEquipe_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lstTache1);
+            this.groupBox2.Controls.Add(this.lstTache2);
+            this.groupBox2.Controls.Add(this.lstTache3);
+            this.groupBox2.Controls.Add(this.lstTache4);
+            this.groupBox2.Controls.Add(this.lstTache5);
+            this.groupBox2.Location = new System.Drawing.Point(359, 87);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(295, 275);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tâche";
+            // 
+            // lstTache1
+            // 
+            this.lstTache1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstTache1.FormattingEnabled = true;
+            this.lstTache1.Location = new System.Drawing.Point(29, 34);
+            this.lstTache1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstTache1.Name = "lstTache1";
+            this.lstTache1.Size = new System.Drawing.Size(237, 24);
+            this.lstTache1.TabIndex = 2;
+            // 
+            // lstTache2
+            // 
+            this.lstTache2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstTache2.FormattingEnabled = true;
+            this.lstTache2.Location = new System.Drawing.Point(29, 79);
+            this.lstTache2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstTache2.Name = "lstTache2";
+            this.lstTache2.Size = new System.Drawing.Size(237, 24);
+            this.lstTache2.TabIndex = 4;
+            // 
+            // lstTache3
+            // 
+            this.lstTache3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstTache3.FormattingEnabled = true;
+            this.lstTache3.Location = new System.Drawing.Point(29, 128);
+            this.lstTache3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstTache3.Name = "lstTache3";
+            this.lstTache3.Size = new System.Drawing.Size(237, 24);
+            this.lstTache3.TabIndex = 5;
+            // 
+            // lstTache4
+            // 
+            this.lstTache4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstTache4.FormattingEnabled = true;
+            this.lstTache4.Location = new System.Drawing.Point(29, 178);
+            this.lstTache4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstTache4.Name = "lstTache4";
+            this.lstTache4.Size = new System.Drawing.Size(237, 24);
+            this.lstTache4.TabIndex = 6;
+            // 
+            // lstTache5
+            // 
+            this.lstTache5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstTache5.FormattingEnabled = true;
+            this.lstTache5.Location = new System.Drawing.Point(29, 225);
+            this.lstTache5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstTache5.Name = "lstTache5";
+            this.lstTache5.Size = new System.Drawing.Size(237, 24);
+            this.lstTache5.TabIndex = 7;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lstEmploye1);
@@ -115,6 +189,7 @@
             // 
             // lstEmploye1
             // 
+            this.lstEmploye1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstEmploye1.FormattingEnabled = true;
             this.lstEmploye1.Location = new System.Drawing.Point(29, 34);
             this.lstEmploye1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -124,6 +199,7 @@
             // 
             // lstEmploye2
             // 
+            this.lstEmploye2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstEmploye2.FormattingEnabled = true;
             this.lstEmploye2.Location = new System.Drawing.Point(29, 79);
             this.lstEmploye2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -133,6 +209,7 @@
             // 
             // lstEmploye3
             // 
+            this.lstEmploye3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstEmploye3.FormattingEnabled = true;
             this.lstEmploye3.Location = new System.Drawing.Point(29, 128);
             this.lstEmploye3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -142,6 +219,7 @@
             // 
             // lstEmploye4
             // 
+            this.lstEmploye4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstEmploye4.FormattingEnabled = true;
             this.lstEmploye4.Location = new System.Drawing.Point(29, 178);
             this.lstEmploye4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -151,6 +229,7 @@
             // 
             // lstEmploye5
             // 
+            this.lstEmploye5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstEmploye5.FormattingEnabled = true;
             this.lstEmploye5.Location = new System.Drawing.Point(29, 225);
             this.lstEmploye5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -175,74 +254,6 @@
             this.txtNomEquipe.Size = new System.Drawing.Size(275, 22);
             this.txtNomEquipe.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lstTache1);
-            this.groupBox2.Controls.Add(this.lstTache2);
-            this.groupBox2.Controls.Add(this.lstTache3);
-            this.groupBox2.Controls.Add(this.lstTache4);
-            this.groupBox2.Controls.Add(this.lstTache5);
-            this.groupBox2.Location = new System.Drawing.Point(359, 87);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(295, 275);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tâche";
-            // 
-            // lstTache1
-            // 
-            this.lstTache1.FormattingEnabled = true;
-            this.lstTache1.Location = new System.Drawing.Point(29, 34);
-            this.lstTache1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lstTache1.Name = "lstTache1";
-            this.lstTache1.Size = new System.Drawing.Size(237, 24);
-            this.lstTache1.TabIndex = 2;
-            // 
-            // lstTache2
-            // 
-            this.lstTache2.FormattingEnabled = true;
-            this.lstTache2.Location = new System.Drawing.Point(29, 79);
-            this.lstTache2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lstTache2.Name = "lstTache2";
-            this.lstTache2.Size = new System.Drawing.Size(237, 24);
-            this.lstTache2.TabIndex = 4;
-            // 
-            // lstTache3
-            // 
-            this.lstTache3.FormattingEnabled = true;
-            this.lstTache3.Location = new System.Drawing.Point(29, 128);
-            this.lstTache3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lstTache3.Name = "lstTache3";
-            this.lstTache3.Size = new System.Drawing.Size(237, 24);
-            this.lstTache3.TabIndex = 5;
-            // 
-            // lstTache4
-            // 
-            this.lstTache4.FormattingEnabled = true;
-            this.lstTache4.Location = new System.Drawing.Point(29, 178);
-            this.lstTache4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lstTache4.Name = "lstTache4";
-            this.lstTache4.Size = new System.Drawing.Size(237, 24);
-            this.lstTache4.TabIndex = 6;
-            // 
-            // lstTache5
-            // 
-            this.lstTache5.FormattingEnabled = true;
-            this.lstTache5.Location = new System.Drawing.Point(29, 225);
-            this.lstTache5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lstTache5.Name = "lstTache5";
-            this.lstTache5.Size = new System.Drawing.Size(237, 24);
-            this.lstTache5.TabIndex = 7;
-            // 
-            // btnCreerEquipe
-            // 
-            this.btnCreerEquipe.Location = new System.Drawing.Point(258, 381);
-            this.btnCreerEquipe.Name = "btnCreerEquipe";
-            this.btnCreerEquipe.Size = new System.Drawing.Size(154, 49);
-            this.btnCreerEquipe.TabIndex = 14;
-            this.btnCreerEquipe.Text = "Créer équipe";
-            this.btnCreerEquipe.UseVisualStyleBackColor = true;
-            // 
             // frmDirecteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -257,8 +268,8 @@
             this.tabEquipe.ResumeLayout(false);
             this.grpEquipe.ResumeLayout(false);
             this.grpEquipe.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

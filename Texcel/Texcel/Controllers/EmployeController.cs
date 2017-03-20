@@ -12,7 +12,7 @@ namespace Texcel
 
         public EmployeController()
         {
-
+            Select("");
         }
 
         public List<Employe> ListEmploye

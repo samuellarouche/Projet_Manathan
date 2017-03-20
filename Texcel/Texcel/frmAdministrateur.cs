@@ -44,25 +44,53 @@ namespace Texcel
                 case "OS":
                     if(ValiderTout(grpOS))
                     {
-                        OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
-                        lstOS.Items.Add(OSControl.ListOS.Last());
+                        try
+                        {
+                            OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
+                            lstOS.Items.Add(OSControl.ListOS.Last());
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Un OS avec le même code existe déjà dans le système.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     break;
                 case "Plateforme":
                     if(ValiderTout(grpPlateforme))
                     {
-                        plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
-                        lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                        try
+                        {
+                            plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
+                            lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Une plateforme avec le même nom existe déjà dans le système.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }                   
                     break;
                 case "Jeu":
-                    if(ValiderTout(grpJeu))                    
-                        jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);//Pas encore de plateforme dans la bd.
+                    if(ValiderTout(grpJeu))
+                        try
+                        {
+                            jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);//Pas encore de plateforme dans la bd.
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Un jeu avec le même nom existe déjà dans le système.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     break;
                 case "Employé":
                     if(ValiderTout(grpEmploye))
-                        employeControl.Insert(txtMatricule.Text, txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date, txtAdresse.Text, txtTelResidentiel.Text, 
-                        txtPosteTel.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text);
+                        try
+                        {
+                            employeControl.Insert(txtMatricule.Text, txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date, txtAdresse.Text, txtTelResidentiel.Text,
+                                txtPosteTel.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Un employé avec le même matricule existe déjà dans le système.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     break;
                 case "Thème":
                     if(ValiderTout(grpThemeGenreClass))

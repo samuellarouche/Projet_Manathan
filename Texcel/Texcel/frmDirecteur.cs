@@ -12,15 +12,28 @@ namespace Texcel
 {
     public partial class frmDirecteur : frmAdministrateur
     {
+        EmployeController employeControl = new EmployeController();
+
         public frmDirecteur()
         {
             InitializeComponent();
             tabAjout.Dispose();
             radEmploye.Dispose();
+            InsertionListEmploye();
         }
 
         //Insère les employés dans les listes.
         private void InsertionListEmploye()
+        {
+            for (int i = 1; i < 6; i++)
+            {
+                (Controls.Find("lstEmploye" + i, true)[0] as ComboBox).Items.AddRange(employeControl.ListEmploye.ToArray());
+            }
+            
+            //lstEmploye1.Items.AddRange(employeControl.ListEmploye.ToArray());
+        }
+
+        private void btnCreerEquipe_Click(object sender, EventArgs e)
         {
 
         }
