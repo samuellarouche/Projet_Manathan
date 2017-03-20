@@ -138,7 +138,7 @@ IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux') IS NOT NULL
 DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux
 
 CREATE TABLE tblPlateformeJeux	(
-								 codePlateforme	int IDENTITY(1,1)	NOT NULL,
+								 codePlateforme	int	NOT NULL,
 								 codeJeux	int	NOT NULL,
 								 PRIMARY KEY(codePlateforme, codeJeux)
 								);
