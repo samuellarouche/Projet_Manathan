@@ -18,5 +18,11 @@ namespace Texcel
             tabAjout.Dispose();
             radEmploye.Dispose();
         }
+
+        //Insère les employés dans les listes.
+        private void InsertionListEmploye()
+        {
+
+        }
     }
 }

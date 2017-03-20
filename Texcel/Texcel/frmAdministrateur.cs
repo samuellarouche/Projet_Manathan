@@ -37,6 +37,8 @@ namespace Texcel
         //Ajoute un élément selon la catégorie d'ajout sélectionnée.
         private void btnAjouter_Click(object sender, EventArgs e)
         {
+            Plateforme plateforme = (Plateforme)lstPlateforme.SelectedItem;
+
             switch ((string)lstCategorie.SelectedItem)
             {
                 case "OS":

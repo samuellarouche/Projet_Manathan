@@ -20,3 +20,4 @@ C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.exe
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.pdb
 C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmDirecteur.resources
 C:\Users\Francis\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.frmDirecteur.resources
+C:\Users\utilisateur\Desktop\Projet Prog\Texcel\Texcel\obj\Debug\Texcel.csprojResolveAssemblyReference.cache

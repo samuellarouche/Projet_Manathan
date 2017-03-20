@@ -18,7 +18,7 @@ namespace Texcel
         //Permet de créer un jeu dans la BD.
         public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO vueJeux VALUES (@0, @1, @2, @3, @4, @5, @6)", 
+            Provider.ExecuterCommande("INSERT INTO vueJeux (nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme) VALUES (@0, @1, @2, @3, @4, @5, @6)", 
                 champs[0], champs[1], champs[2], champs[3], (champs[4] as Classification).CodeClassification, (champs[5] as Genre).CodeGenre, (champs[6] as Theme).CodeTheme);
         }
 
