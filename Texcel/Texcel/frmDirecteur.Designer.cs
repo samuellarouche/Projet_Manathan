@@ -107,7 +107,6 @@
             this.btnCreerEquipe.TabIndex = 14;
             this.btnCreerEquipe.Text = "Créer équipe";
             this.btnCreerEquipe.UseVisualStyleBackColor = true;
-            this.btnCreerEquipe.Click += new System.EventHandler(this.btnCreerEquipe_Click);
             // 
             // groupBox2
             // 

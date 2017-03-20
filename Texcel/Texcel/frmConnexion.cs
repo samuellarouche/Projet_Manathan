@@ -36,7 +36,7 @@ namespace Texcel
             }
             else
             {
-                MessageBox.Show("Le matricule ou le mot de passe est incorrect.");
+                MessageBox.Show("Le matricule ou le mot de passe est incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

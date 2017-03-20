@@ -19,6 +19,7 @@ namespace Texcel
         public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO tblClassification (nomClassification, descriptionClassification) VALUES(@0, @1)", champs[0], champs[1]);
+            Select("");//Sert à insérer les classifications dans la liste lors de l'insertion.
         }
 
         //Permet de récupérer toutes les classifications de la BD.

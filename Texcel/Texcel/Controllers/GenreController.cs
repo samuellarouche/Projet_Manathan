@@ -19,8 +19,7 @@ namespace Texcel
         public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO vueGenre (nomGenre, descriptionGenre) VALUES(@0, @1)", champs[0], champs[1]);
-            //Trouver un moyen pour ajouter les genres dans la liste lors de l'insertion.
-            //Trouver un moyen pour afficher les noms au lieu des codes dans la listView.
+            Select("");//Sert à insérer les genre dans la liste lors de l'insertion.
         }
 
         //Permet de récupérer tous les genres de la BD.

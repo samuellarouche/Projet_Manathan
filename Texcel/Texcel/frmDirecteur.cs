@@ -29,13 +29,6 @@ namespace Texcel
             {
                 (Controls.Find("lstEmploye" + i, true)[0] as ComboBox).Items.AddRange(employeControl.ListEmploye.ToArray());
             }
-            
-            //lstEmploye1.Items.AddRange(employeControl.ListEmploye.ToArray());
-        }
-
-        private void btnCreerEquipe_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

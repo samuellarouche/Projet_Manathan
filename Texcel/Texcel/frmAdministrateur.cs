@@ -192,7 +192,6 @@ namespace Texcel
                         jeu.Developpeur,
                         jeu.Description,
                         jeu.ConfigMin,
-                        //jeu.CodePlateforme Trouver un moyen pour mettre le code de plateforme.
                         jeu.CodeClassification,
                         jeu.CodeGenre,
                         jeu.CodeTheme

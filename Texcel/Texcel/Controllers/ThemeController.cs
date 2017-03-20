@@ -19,6 +19,7 @@ namespace Texcel
         public override void Insert(params object[] champs)
         {
             Provider.ExecuterCommande("INSERT INTO vueTheme (nomTheme, descriptionTheme) VALUES(@0, @1)", champs[0], champs[1]);
+            Select("");//Sert à insérer les thèmes dans la liste lors de l'insertion.
         }
 
         //Permet de récupérer tous les thèmes de la BD.
