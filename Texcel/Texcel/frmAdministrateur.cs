@@ -48,6 +48,7 @@ namespace Texcel
                         {
                             OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
                             lstOS.Items.Add(OSControl.ListOS.Last());
+                            ViderChamp(grpOS);
                         }
                         catch
                         {
@@ -62,6 +63,7 @@ namespace Texcel
                         {
                             plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
                             lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
+                            ViderChamp(grpPlateforme);
                         }
                         catch
                         {
@@ -73,7 +75,8 @@ namespace Texcel
                     if(ValiderTout(grpJeu))
                         try
                         {
-                            jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);//Pas encore de plateforme dans la bd.
+                            jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);
+                            ViderChamp(grpJeu);
                         }
                         catch
                         {
@@ -86,6 +89,7 @@ namespace Texcel
                         {
                             employeControl.Insert(txtMatricule.Text, txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date, txtAdresse.Text, txtTelResidentiel.Text,
                                 txtPosteTel.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text);
+                            ViderChamp(grpEmploye);
                         }
                         catch
                         {
@@ -97,6 +101,7 @@ namespace Texcel
                     {
                         themeControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
                         lstTheme.Items.Add(themeControl.ListTheme.Last());
+                        ViderChamp(grpThemeGenreClass);
                     }                    
                     break;
                 case "Genre":
@@ -104,6 +109,7 @@ namespace Texcel
                     {
                         genreControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
                         lstGenre.Items.Add(genreControl.ListGenre.Last());
+                        ViderChamp(grpThemeGenreClass);
                     }                  
                     break;
                 case "Classification":
@@ -111,9 +117,12 @@ namespace Texcel
                     {
                         classificationControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
                         lstClassification.Items.Add(classificationControl.ListClassification.Last());
+                        ViderChamp(grpThemeGenreClass);
                     }                    
                     break;
             }
+
+            
         }
 
         //Recherche les éléments dans la BD et les affiche dans la ListView.
@@ -371,8 +380,22 @@ namespace Texcel
 
             if (!valide)
                 MessageBox.Show("Veuillez remplir tous les champs correctement.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show("L'élément a bien été ajouté!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return valide;
+        }
+
+        //Vide les champs.
+        private void ViderChamp(Control groupBox)
+        {
+            foreach(Control champ in groupBox.Controls)
+            {
+                if ((champ is TextBox) || (champ is RichTextBox))         
+                    champ.Text = "";                
+                else if (champ is ComboBox)
+                    (champ as ComboBox).SelectedIndex = -1;
+            }
         }
 
         //Ferme l'application.
