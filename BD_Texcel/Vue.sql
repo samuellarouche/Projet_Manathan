@@ -113,3 +113,6 @@ CREATE VIEW vueEquipe AS
 SELECT *
 FROM tblEquipe
 GO
+
+SELECT *
+FROM vueEquipe

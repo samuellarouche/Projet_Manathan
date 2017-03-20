@@ -48,7 +48,9 @@ DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEquipe
 
 CREATE TABLE tblEquipe		(codeEquipe int IDENTITY(1,1)	NOT NULL,
 							 PRIMARY KEY(codeEquipe),
-							 matricule	varchar(200)	NULL
+							 nomEquipe	varchar(50)			NOT NULL,
+							 matricule	varchar(200)			NULL,
+							 tache		varchar(50)			NOT NULL
 							);
 GO
 
