@@ -34,6 +34,13 @@ namespace Texcel
             lstClassification.Items.AddRange(classificationControl.ListClassification.ToArray());
         }             
 
+        //private void Test(Control groupBox, ComboBox comboBox, Controller controller ,List<object> list, params string[] insert)
+        //{
+        //    controller.Insert(insert);
+        //    comboBox.Items.Add(list);
+        //    ViderChamp(groupBox);
+        //}
+
         //Ajoute un élément selon la catégorie d'ajout sélectionnée.
         private void btnAjouter_Click(object sender, EventArgs e)
         {
