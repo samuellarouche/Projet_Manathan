@@ -19,6 +19,7 @@ namespace Texcel
             InitializeComponent();
             tabAjout.Dispose();
             radEmploye.Dispose();
+            btnSupprimer.Dispose();
             InsertionListEmploye();
         }
 
