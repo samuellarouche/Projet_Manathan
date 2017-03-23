@@ -23,5 +23,7 @@ namespace Texcel
         public abstract void Insert(params object[] champs);
 
         public abstract void Select(string where);
+
+        public abstract void Delete(string primaryKey);
     }
 }

@@ -103,7 +103,7 @@ CREATE TABLE tblOS		(nom					varchar(50)				NOT NULL,
 						 codeOS					varchar(50)				NOT NULL,
 						 PRIMARY KEY(codeOS),
 						 edition				varchar(50)				NOT NULL,
-						 tagOS					varchar(200)			NULL		
+						 tagOS					varchar(200)			NULL,	
 						);
 GO
 
@@ -138,7 +138,7 @@ IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux') IS NOT NULL
 DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux
 
 CREATE TABLE tblPlateformeJeux	(
-								 codePlateforme	int IDENTITY(1,1)	NOT NULL,
+								 codePlateforme	int	NOT NULL,
 								 codeJeux	int	NOT NULL,
 								 PRIMARY KEY(codePlateforme, codeJeux)
 								);
@@ -255,7 +255,7 @@ IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblClassification') IS NOT NULL
 DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblClassification
 
 CREATE TABLE tblClassification			(
-										 codeclassification	int IDENTITY(1,1)	NOT NULL,
+										 codeClassification	int IDENTITY(1,1)	NOT NULL,
 										 PRIMARY KEY(codeclassification),
 										 nomClassification	varchar(50)			NOT NULL,
 										 descriptionClassification	varchar(50)		NULL,

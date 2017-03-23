@@ -43,36 +43,37 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("OCR A Extended", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(192, 11);
+            this.label1.Location = new System.Drawing.Point(144, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 52);
+            this.label1.Size = new System.Drawing.Size(162, 41);
             this.label1.TabIndex = 0;
             this.label1.Text = "Texcel";
             // 
             // txtNomUtilisateur
             // 
-            this.txtNomUtilisateur.Location = new System.Drawing.Point(36, 65);
-            this.txtNomUtilisateur.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNomUtilisateur.Location = new System.Drawing.Point(27, 53);
+            this.txtNomUtilisateur.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNomUtilisateur.Name = "txtNomUtilisateur";
-            this.txtNomUtilisateur.Size = new System.Drawing.Size(259, 22);
+            this.txtNomUtilisateur.Size = new System.Drawing.Size(195, 20);
             this.txtNomUtilisateur.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(36, 149);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPassword.Location = new System.Drawing.Point(27, 121);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(259, 22);
+            this.txtPassword.Size = new System.Drawing.Size(195, 20);
             this.txtPassword.TabIndex = 2;
             // 
             // btnConnecter
             // 
             this.btnConnecter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnConnecter.Location = new System.Drawing.Point(228, 321);
-            this.btnConnecter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConnecter.Location = new System.Drawing.Point(171, 261);
+            this.btnConnecter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConnecter.Name = "btnConnecter";
-            this.btnConnecter.Size = new System.Drawing.Size(127, 23);
+            this.btnConnecter.Size = new System.Drawing.Size(95, 19);
             this.btnConnecter.TabIndex = 3;
             this.btnConnecter.Text = "Se connecter";
             this.btnConnecter.UseVisualStyleBackColor = true;
@@ -81,18 +82,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(133, 41);
+            this.label2.Location = new System.Drawing.Point(100, 33);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 17);
+            this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Matricule";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(119, 129);
+            this.label3.Location = new System.Drawing.Point(89, 105);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 17);
+            this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Mot de passe";
             // 
@@ -103,26 +106,27 @@
             this.grpIdentification.Controls.Add(this.label3);
             this.grpIdentification.Controls.Add(this.txtPassword);
             this.grpIdentification.Controls.Add(this.label2);
-            this.grpIdentification.Location = new System.Drawing.Point(123, 74);
-            this.grpIdentification.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpIdentification.Location = new System.Drawing.Point(92, 60);
+            this.grpIdentification.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grpIdentification.Name = "grpIdentification";
-            this.grpIdentification.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grpIdentification.Size = new System.Drawing.Size(333, 215);
+            this.grpIdentification.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpIdentification.Size = new System.Drawing.Size(250, 175);
             this.grpIdentification.TabIndex = 6;
             this.grpIdentification.TabStop = false;
             this.grpIdentification.Text = "Identification";
             // 
             // frmConnexion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.btnConnecter;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(579, 383);
+            this.ClientSize = new System.Drawing.Size(434, 311);
             this.Controls.Add(this.grpIdentification);
             this.Controls.Add(this.btnConnecter);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmConnexion";
             this.Text = "Connexion";
             this.grpIdentification.ResumeLayout(false);

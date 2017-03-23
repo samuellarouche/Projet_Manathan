@@ -18,8 +18,8 @@ namespace Texcel
         //Permet de créer un jeu dans la BD.
         public override void Insert(params object[] champs)
         {
-            Provider.ExecuterCommande("INSERT INTO vueJeux (nom, developpeur, descriptionJeu, configMin, codeGenre, codeClassification, codeTheme) VALUES (@0, @1, @2, @3, @4, @5, @6)", 
-                champs[0], champs[1], champs[2], champs[3], (champs[5] as Genre).CodeGenre, (champs[4] as Classification).CodeClassification, (champs[6] as Theme).CodeTheme);
+            Provider.ExecuterCommande("INSERT INTO vueJeux (nom, developpeur, descriptionJeu, configMin, nomPlateforme, nomGenre, nomClassification, nomTheme) VALUES (@0, @1, @2, @3, @4, @5, @6, @7)", 
+                champs[0], champs[1], champs[2], champs[3], (champs[4] as Plateforme).Nom, (champs[6] as Genre).Nom, (champs[5] as Classification).Nom, (champs[7] as Theme).Nom);
         }
 
         //Permet de récupérer tous les jeux de la BD.
@@ -28,13 +28,18 @@ namespace Texcel
             Jeu jeu;
 
             listJeu.Clear();
-            foreach(object[] jeuSelectionne in Provider.CommandeLecture("SELECT * FROM vueJeuxAll " + where))
+            foreach(object[] jeuSelectionne in Provider.CommandeLecture("SELECT * FROM vueJeux " + where))
             {
                 jeu = new Jeu(jeuSelectionne[1].ToString(), jeuSelectionne[2].ToString(), jeuSelectionne[3].ToString(), jeuSelectionne[4].ToString(),
                     jeuSelectionne[5].ToString(), jeuSelectionne[6].ToString(), jeuSelectionne[7].ToString());
 
                 listJeu.Add(jeu);
             }
+        }
+
+        public override void Delete(string primaryKey)
+        {
+            Provider.ExecuterCommande("DELETE FROM vueJeux WHERE nom = '" + primaryKey + "'");
         }
 
         public List<Jeu> ListJeu

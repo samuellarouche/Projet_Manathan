@@ -37,6 +37,11 @@ namespace Texcel
             }
         }
 
+        public override void Delete(string primaryKey)
+        {
+            Provider.ExecuterCommande("DELETE FROM vuePlateforme WHERE nom = '" + primaryKey + "'");
+        }
+
         public List<Plateforme> ListPlateforme
         {
             get { return listPlateforme; }

@@ -5,7 +5,7 @@ IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueJeux') IS NOT NULL
 DROP VIEW vueJeux
 GO
 CREATE VIEW vueJeux AS
-SELECT codeJeux, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme, tagJeux
+SELECT J.codeJeux, J.nom, developpeur, descriptionJeu, configMin, P.nom AS nomPlateforme, nomGenre, nomClassification, nomTheme
 FROM tblJeux AS J
 JOIN tblGenre AS G
 ON J.codeGenre=G.codeGenre
@@ -13,6 +13,10 @@ JOIN tblClassification AS C
 ON J.codeclassification = C.codeclassification
 JOIN tblTheme AS T
 ON J.codeTheme=T.codeTheme
+JOIN tblPlateformeJeux as PJ
+ON PJ.codeJeux = J.codeJeux
+JOIN tblPlateforme AS P
+ON P.codePlateforme = PJ.codePlateforme
 GO
 
 SELECT codeJeux, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme,
@@ -28,8 +32,8 @@ SELECT *
 FROM tblPlateforme
 GO
 
-SELECT nom, configuration, typeConfiguration, codePlateforme, codeOS,
-CONCAT(nom, configuration, typeConfiguration, codePlateforme, codeOS) AS tagPlateforme
+SELECT nom, configuration, typeConfiguration, codePlateforme, codeOS, tagPlateforme,
+CONCAT(nom, configuration, typeConfiguration, codePlateforme, codeOS, tagPlateforme) AS tagPlateforme
 FROM vuePlateforme
 
 

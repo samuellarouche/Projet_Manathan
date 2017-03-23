@@ -1,46 +1,78 @@
 USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('AjoutJeux') IS NOT NULL
-DROP TRIGGER AjoutJeux
+-- --------------------------------------------------------------------
+-- Un trigger permettant de suprimmer un jeu à partir de la vue vueJeux
+-- --------------------------------------------------------------------
+IF OBJECT_ID('trigger_DeleteJeu') IS NOT NULL
+DROP TRIGGER trigger_DeleteJeu
 GO
 
-CREATE TRIGGER AjoutJeux ON vueJeux INSTEAD OF INSERT AS
+CREATE TRIGGER trigger_DeleteJeu ON vueJeux INSTEAD OF DELETE AS
+BEGIN
+	DECLARE @nom AS varchar(50)
 
-BEGIN 
-		DECLARE @nom as varchar(50),
-		 @developpeur as varchar(50),
-		 @descriptionJeu as varchar(50),
-		 @configMin as varchar(50),
-		 @codeClassification as varchar(50),
-		 @codeGenre as varchar(50),
-		 @codeTheme as varchar(50),
-		 @codePlateforme as varchar(50),
-		 @codeJeux as varchar(50)
-		 
-		
-		SELECT DISTINCT @nom = nom, @developpeur = developpeur, @descriptionJeu = descriptionJeu, @configMin = configMin, @codeClassification = (SELECT codeClassification FROM tblClassification), @codeGenre = (SELECT codeGenre FROM tblGenre), @codeTheme = (SELECT codeTheme FROM tblTheme), @codePlateforme = (SELECT codePlateforme	FROM tblPlateforme)
-		FROM inserted;
+	SELECT @nom = nom
+	FROM deleted
 
-		
-		INSERT dbo.tblJeux (nom, developpeur, descriptionJeu, configMin, codeclassification, codeGenre, codeTheme) VALUES (@nom,@developpeur,@descriptionJeu,@configMin,@codeClassification,@codeGenre,@codeTheme)
+	DELETE FROM tblJeux WHERE nom = @nom
 END
-
-INSERT dbo.vueJeux (nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification , nomTheme) VALUES ('Game of Thumbs','Totema Studio','ceci est un train','pas de configmin', 'nomGenre' , 'nomTheme', 'nomClass')
 GO
 
-INSERT INTO dbo.vuePlateforme (nom, configuration, typeConfiguration, codeOS) VALUES ('Xbox', '500Gb', 'Blanc', 'codeOS')
+-- -------------------------------------------------------------------------------------------------------------------------
+-- Un trigger permettant d'insérer les informations dans la table d'intersection tblPlateformeJeux lors de l'ajout d'un jeu.
+-- -------------------------------------------------------------------------------------------------------------------------
+IF OBJECT_ID('trigger_InsertJeuIntersection') IS NOT NULL
+DROP TRIGGER trigger_InsertJeuIntersection
+GO
 
-SELECT *
-FROM tblJeux
+CREATE TRIGGER trigger_InsertJeuIntersection ON vueJeux INSTEAD OF INSERT AS
+BEGIN
+	DECLARE @nomPlateforme AS varchar(50)
+	DECLARE @nomJeu AS varchar(50)
+	DECLARE @developpeur AS varchar(50)
+	DECLARE @description AS varchar(50)
+	DECLARE @configMin AS varchar(50)
+	DECLARE @nomTheme AS varchar(50)
+	DECLARE @nomClass AS varchar(50)
+	DECLARE @nomGenre AS varchar(50)
+	DECLARE @codeClass AS int
+	DECLARE @codeGenre AS int
+	DECLARE @codeTheme AS int
+	DECLARE @codePlateforme AS int
+	DECLARE @codeJeux AS int
 
-SELECT *
-FROM tblPlateformeJeux
+	-- Récupère les données insérées.
+	SELECT @nomPlateforme = nomPlateforme, @nomJeu = nom, @developpeur = developpeur, @description = descriptionJeu,
+		   @configMin = configMin, @nomClass = nomClassification, @nomTheme = nomTheme, @nomGenre = nomGenre
+	FROM inserted
 
-SELECT  * 
-FROM vueJeux
+	-- Récupère les codes (genre, thème, classification) selon les noms insérés.
+	SELECT @codeClass = codeClassification
+	FROM tblClassification
+	WHERE nomClassification = @nomClass
 
-SELECT *
-FROM vuePlateforme
+	SELECT @codeGenre = codeGenre
+	FROM tblGenre
+	WHERE nomGenre = @nomGenre
 
+	SELECT @codeTheme = codeTheme
+	FROM tblTheme
+	WHERE nomTheme = @nomTheme
 
+	-- Insère les informations dans la table tblJeux.
+	INSERT INTO tblJeux (nom, developpeur, descriptionJeu, configMin, codeClassification, codeGenre, codeTheme) VALUES(@nomJeu, @developpeur, @description, @configMin, @codeClass, @codeGenre, @codeTheme)
+
+	-- Sélectionne le code plateforme et le code jeux selon leur nom.
+	SELECT @codePlateforme = codePlateforme
+	FROM vuePlateforme
+	WHERE nom = @nomPlateforme
+
+	SELECT @codeJeux = codeJeux
+	FROM tblJeux
+	WHERE nom = @nomJeu
+
+	-- Insère les codes dans la table d'intersection tblPlateformeJeux.
+	INSERT INTO tblPlateformeJeux VALUES (@codePlateforme, @codeJeux)
+END
+GO

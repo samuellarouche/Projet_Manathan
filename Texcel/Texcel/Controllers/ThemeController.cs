@@ -35,6 +35,11 @@ namespace Texcel
             }
         }
 
+        public override void Delete(string where)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Theme> ListTheme
         {
             get { return listTheme; }

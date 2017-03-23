@@ -35,6 +35,11 @@ namespace Texcel
             }
         }
 
+        public override void Delete(string primaryKey)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Classification> ListClassification
         {
             get { return listClassification; }

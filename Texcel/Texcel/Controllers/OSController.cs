@@ -36,6 +36,11 @@ namespace Texcel
             }
         }
 
+        public override void Delete(string codeOS)
+        {
+            Provider.ExecuterCommande("DELETE FROM vueOS WHERE codeOS = '" + codeOS + "'");
+        }
+
         public List<OS> ListOS
         {
             get { return listOS; }

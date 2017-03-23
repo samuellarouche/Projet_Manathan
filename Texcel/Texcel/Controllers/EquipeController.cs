@@ -20,6 +20,11 @@ namespace Texcel
             get { return listEquipe; }
         }
 
+        public override void Delete(string where)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Insert(params object[] champs)
         {
             throw new NotImplementedException();

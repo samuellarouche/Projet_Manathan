@@ -41,5 +41,10 @@ namespace Texcel
                 listEmploye.Add(employe);
             }
         }
+
+        public override void Delete(string primaryKey)
+        {
+            Provider.ExecuterCommande("DELETE FROM vueEmploye WHERE matricule = '" + primaryKey + "'");
+        }
     }
 }

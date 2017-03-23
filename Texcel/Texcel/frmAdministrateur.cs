@@ -32,14 +32,38 @@ namespace Texcel
             lstTheme.Items.AddRange(themeControl.ListTheme.ToArray());
             lstGenre.Items.AddRange(genreControl.ListGenre.ToArray());
             lstClassification.Items.AddRange(classificationControl.ListClassification.ToArray());
-        }             
+        }
 
-        //private void Test(Control groupBox, ComboBox comboBox, Controller controller ,List<object> list, params string[] insert)
-        //{
-        //    controller.Insert(insert);
-        //    comboBox.Items.Add(list);
-        //    ViderChamp(groupBox);
-        //}
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult;
+
+            if (listView1.SelectedItems.Count > 0)
+            {
+                dialogResult = MessageBox.Show("Attention! Si vous supprimer un élément, tous les éléments qui y sont liés seront également supprimés." +
+                " Êtes-vous sûr de vouloir supprimer cet article?", "Attention!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string primaryKey = listView1.SelectedItems[0].Text;
+
+                    if (radOS.Checked)
+                        OSControl.Delete(primaryKey);
+                    else if (radPlateforme.Checked)
+                        plateformeControl.Delete(primaryKey);
+                    else if (radJeu.Checked)                   
+                        jeuControl.Delete(primaryKey);                    
+                    else
+                        employeControl.Delete(primaryKey);
+                    
+                    listView1.Items.RemoveAt(listView1.SelectedItems[0].Index);
+
+                    MessageBox.Show("L'élément '" + primaryKey + "' a bien été supprimer.", "Élément supprimer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }        
+            }
+            else
+                MessageBox.Show("Veuillez sélectionner un élément à supprimer.", "Aucune sélection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         //Ajoute un élément selon la catégorie d'ajout sélectionnée.
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -82,7 +106,7 @@ namespace Texcel
                     if(ValiderTout(grpJeu))
                         try
                         {
-                            jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);
+                            jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstPlateforme.SelectedItem, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);
                             ViderChamp(grpJeu);
                         }
                         catch
@@ -135,7 +159,7 @@ namespace Texcel
         //Recherche les éléments dans la BD et les affiche dans la ListView.
         private void btnRechercher_Click(object sender, EventArgs e)
         {
-            //Penser à peut-être mettre les conditions dans les controllers.
+            #region Condition 'WHERE'
             string conditionOS, conditionPlateforme, conditionJeu, conditionEmploye;
             conditionOS = "WHERE nom LIKE '%" + txtRecherche.Text + "%' " +
                           "OR versionOS LIKE '%" + txtRecherche.Text + "%' " +
@@ -163,6 +187,7 @@ namespace Texcel
                                "OR telResidentiel LIKE '%" + txtRecherche.Text + "%' " +
                                "OR posteTelephonique LIKE '%" + txtRecherche.Text + "%' " +
                                "OR titreEmploye LIKE '%" + txtRecherche.Text + "%' ";
+            #endregion
 
             listView1.Items.Clear();
 
@@ -388,7 +413,7 @@ namespace Texcel
             if (!valide)
                 MessageBox.Show("Veuillez remplir tous les champs correctement.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
-                MessageBox.Show("L'élément a bien été ajouté!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("L'élément a bien été ajouté!", "Élément ajouté", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return valide;
         }
