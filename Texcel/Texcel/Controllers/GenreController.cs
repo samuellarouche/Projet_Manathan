@@ -9,6 +9,7 @@ namespace Texcel
     class GenreController : Controller
     {
         List<Genre> listGenre = new List<Genre>();
+        Genre genre;
 
         public GenreController()
         {
@@ -16,21 +17,21 @@ namespace Texcel
         }
 
         //Permet de créer un genre dans la BD.
-        public override void Insert(params object[] champs)
+        public override void Insert(object item)
         {
-            Provider.ExecuterCommande("INSERT INTO vueGenre (nomGenre, descriptionGenre) VALUES(@0, @1)", champs[0], champs[1]);
-            Select("");//Sert à insérer les genre dans la liste lors de l'insertion.
+            genre = (Genre)item;
+
+            Provider.ExecuterCommande("INSERT INTO vueGenre (nomGenre, descriptionGenre) VALUES(@0, @1)", genre.Nom, genre.Description);
+            Select("");//Sert à insérer les genres dans la liste lors de l'insertion.
         }
 
         //Permet de récupérer tous les genres de la BD.
         public override void Select(string where)
-        {
-            Genre genre;
-
+        {           
             listGenre.Clear();
             foreach (object[] genreSelectionne in Provider.CommandeLecture("SELECT * FROM vueGenre " + where))
             {
-                genre = new Genre(Convert.ToInt32(genreSelectionne[0]), genreSelectionne[1].ToString(), genreSelectionne[2].ToString());
+                genre = new Genre(genreSelectionne[1].ToString(), genreSelectionne[2].ToString());
                 listGenre.Add(genre);
             }
         }

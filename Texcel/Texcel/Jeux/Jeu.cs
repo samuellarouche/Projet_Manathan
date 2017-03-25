@@ -8,18 +8,19 @@ namespace Texcel
 {
     class Jeu
     {
-        string nom, developpeur, description, configMin, codePlateforme, codeClassification, codeTheme, codeGenre;
+        string nom, developpeur, description, configMin, nomPlateforme, codeClassification, codeTheme, codeGenre, nomJeuAssocie;//Changer code pour nom
 
-        public Jeu(string nom, string developpeur, string description, string configMin, string codeClassification, string codeGenre, string codeTheme)//Récupérer le code de plateforme à l'aide de la table d'intersection.
+        public Jeu(string nom, string developpeur, string description, string configMin, string nomPlateforme, string codeClassification, string codeGenre, string codeTheme, string jeuAssocie)
         {
             this.nom = nom;
             this.developpeur = developpeur;
             this.description = description;
             this.configMin = configMin;
-            //this.codePlateforme = codePlateforme;
+            this.nomPlateforme = nomPlateforme;
             this.codeClassification = codeClassification;
             this.codeTheme = codeTheme;
             this.codeGenre = codeGenre;
+            this.nomJeuAssocie = jeuAssocie;
         }
 
         public string Nom
@@ -42,10 +43,10 @@ namespace Texcel
             get { return configMin; }
         }
 
-        //public string CodePlateforme
-        //{
-        //    get { return codePlateforme; }
-        //}
+        public string NomPlateforme
+        {
+            get { return nomPlateforme; }
+        }
 
         public string CodeClassification
         {
@@ -60,6 +61,17 @@ namespace Texcel
         public string CodeTheme
         {
             get { return codeTheme; }
+        }
+
+        public string NomJeuAssocie
+        {
+            get { return nomJeuAssocie; }
+            set { nomJeuAssocie = value; }
+        }
+
+        public override string ToString()
+        {
+            return nom;
         }
     }
 }

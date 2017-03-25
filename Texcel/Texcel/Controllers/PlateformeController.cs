@@ -9,6 +9,7 @@ namespace Texcel
     class PlateformeController : Controller
     {
         List<Plateforme> listPlateforme = new List<Plateforme>();
+        Plateforme plateforme;
 
         public PlateformeController() : base()
         {
@@ -16,19 +17,19 @@ namespace Texcel
         }
 
         //Permet de créer une plateforme dans la BD.
-        public override void Insert(params object[] champs)
+        public override void Insert(object item)
         {
-            OS os = (OS)champs[3];
-            Provider.ExecuterCommande("INSERT INTO vuePlateforme (nom, configuration, typeConfiguration, codeOS) VALUES (@0, @1, @2, @3);", champs[0], champs[1], champs[2], os.Code);
+            plateforme = (Plateforme)item;
 
-            listPlateforme.Add(new Plateforme(champs[0].ToString(), champs[1].ToString(), champs[2].ToString(), os.Code));
+            Provider.ExecuterCommande("INSERT INTO vuePlateforme (nom, configuration, typeConfiguration, codeOS) VALUES (@0, @1, @2, @3);", 
+                plateforme.Nom, plateforme.Configuration, plateforme.Type, plateforme.CodeOS);
+
+            listPlateforme.Add(plateforme);
         }
 
         //Permet de récupérer toutes les plateformes de la BD.
         public override void Select(string where)
-        {
-            Plateforme plateforme;
-
+        {            
             listPlateforme.Clear();
             foreach (object[] plateformeSelectionnee in Provider.CommandeLecture("SELECT * FROM vuePlateforme " + where))
             {

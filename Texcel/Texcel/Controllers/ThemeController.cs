@@ -9,6 +9,7 @@ namespace Texcel
     class ThemeController : Controller
     {
         List<Theme> listTheme = new List<Theme>();
+        Theme theme;
 
         public ThemeController()
         {
@@ -16,21 +17,21 @@ namespace Texcel
         }
 
         //Permet de créer un thème dans la BD.
-        public override void Insert(params object[] champs)
+        public override void Insert(object item)
         {
-            Provider.ExecuterCommande("INSERT INTO vueTheme (nomTheme, descriptionTheme) VALUES(@0, @1)", champs[0], champs[1]);
+            theme = (Theme)item;
+
+            Provider.ExecuterCommande("INSERT INTO vueTheme (nomTheme, descriptionTheme) VALUES(@0, @1)", theme.Nom, theme.Description);
             Select("");//Sert à insérer les thèmes dans la liste lors de l'insertion.
         }
 
         //Permet de récupérer tous les thèmes de la BD.
         public override void Select(string where)
-        {
-            Theme theme;
-
+        {          
             listTheme.Clear();
             foreach (object[] themeSelectionne in Provider.CommandeLecture("SELECT * FROM vueTheme " + where))
             {
-                theme = new Theme(Convert.ToInt32(themeSelectionne[0]), themeSelectionne[1].ToString(), themeSelectionne[2].ToString());
+                theme = new Theme(themeSelectionne[1].ToString(), themeSelectionne[2].ToString());
                 listTheme.Add(theme);
             }
         }

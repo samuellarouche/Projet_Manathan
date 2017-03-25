@@ -1,27 +1,27 @@
 USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueJeux') IS NOT NULL
-DROP VIEW vueJeux
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueJeu') IS NOT NULL
+DROP VIEW vueJeu
 GO
-CREATE VIEW vueJeux AS
-SELECT J.codeJeux, J.nom, developpeur, descriptionJeu, configMin, P.nom AS nomPlateforme, nomGenre, nomClassification, nomTheme
-FROM tblJeux AS J
+CREATE VIEW vueJeu AS
+SELECT J.codeJeu, J.nom, developpeur, descriptionJeu, configMin, P.nom AS nomPlateforme, nomGenre, nomClassification, nomTheme, nomJeuAssocie
+FROM tblJeu AS J
 JOIN tblGenre AS G
 ON J.codeGenre=G.codeGenre
 JOIN tblClassification AS C
 ON J.codeclassification = C.codeclassification
 JOIN tblTheme AS T
 ON J.codeTheme=T.codeTheme
-JOIN tblPlateformeJeux as PJ
-ON PJ.codeJeux = J.codeJeux
+JOIN tblPlateformeJeu as PJ
+ON PJ.codeJeu = J.codeJeu
 JOIN tblPlateforme AS P
 ON P.codePlateforme = PJ.codePlateforme
 GO
 
-SELECT codeJeux, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme,
-CONCAT(codeJeux, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme) AS tagJeux
-FROM vueJeux
+SELECT codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme,
+CONCAT(codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme) AS tagJeux
+FROM vueJeu
 
 
 IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vuePlateforme') IS NOT NULL

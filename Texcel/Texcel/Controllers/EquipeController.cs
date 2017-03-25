@@ -25,7 +25,7 @@ namespace Texcel
             throw new NotImplementedException();
         }
 
-        public override void Insert(params object[] champs)
+        public override void Insert(object item)
         {
             throw new NotImplementedException();
         }

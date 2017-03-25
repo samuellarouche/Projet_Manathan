@@ -48,7 +48,8 @@ DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEquipe
 
 CREATE TABLE tblEquipe		(codeEquipe int IDENTITY(1,1)	NOT NULL,
 							 PRIMARY KEY(codeEquipe),
-							 matricule	varchar(200)	NULL
+							 nomEquipe  varchar(50)			NOT NULL,
+							 matricule	varchar(200)		NULL
 							);
 GO
 
@@ -69,24 +70,26 @@ GO
 
 -- Création des tables pour les jeux
 
-PRINT('Création de la table tblJeux')
+PRINT('Création de la table tblJeu')
 -- ----------------------------------------------------------
 USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblJeux') IS NOT NULL
-DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblJeux
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblJeu') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblJeu
 
-CREATE TABLE tblJeux		(codeJeux			int IDENTITY(1,1)		NOT NULL,
-							 PRIMARY KEY(codeJeux),
-							 nom				varchar(50)		NOT NULL,
-							 developpeur		varchar(50)		NOT NULL,
-							 descriptionJeu		varchar(50)		NOT NULL,
-							 configMin			varchar(50)		NOT NULL,
-							 codeclassification	int				NOT NULL,
-							 codeGenre	int						NOT NULL,
-							 codeTheme	int						NOT NULL,
-							 tagJeux			varchar(200)	NULL
+CREATE TABLE tblJeu			(codeJeu			int IDENTITY(1,1)		NOT NULL,
+							 PRIMARY KEY(codeJeu),
+							 nom				varchar(50) UNIQUE		NOT NULL,
+							 developpeur		varchar(50)				NOT NULL,
+							 descriptionJeu		varchar(50)				NOT NULL,
+							 configMin			varchar(50)				NOT NULL,
+							 codeclassification	int						NOT NULL,
+							 codeGenre	int								NOT NULL,
+							 codeTheme	int								NOT NULL,
+							 codeJeuAssocie		int						NULL,
+							 nomJeuAssocie		varchar(50)				NULL,
+							 tagJeu			varchar(200)				NULL
 							);
 GO
 
@@ -118,7 +121,7 @@ IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblPlateforme') IS NOT NULL
 DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblPlateforme
 
 CREATE TABLE tblPlateforme		(
-								 nom							varchar(50)						NOT NULL,
+								 nom							varchar(50) UNIQUE				NOT NULL,
 								 configuration					varchar(50)						NOT NULL,
 								 typeConfiguration				varchar(50)						NOT NULL,
 								 codePlateforme					int IDENTITY(1,1)				NOT NULL,
@@ -134,13 +137,13 @@ PRINT('Création de la table tblPlateformeJeux')
 USE BD_Texcel_SAM_FRAN
 GO
 
-IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux') IS NOT NULL
-DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeux
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeu') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblPlateformeJeu
 
-CREATE TABLE tblPlateformeJeux	(
+CREATE TABLE tblPlateformeJeu	(
 								 codePlateforme	int	NOT NULL,
-								 codeJeux	int	NOT NULL,
-								 PRIMARY KEY(codePlateforme, codeJeux)
+								 codeJeu	int	NOT NULL,
+								 PRIMARY KEY(codePlateforme, codeJeu)
 								);
 GO 
 
@@ -190,7 +193,7 @@ DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblProjetTest
 CREATE TABLE tblProjetTest		(
 								 codeProjetTest	int IDENTITY(1,1)	NOT NULL,
 								 PRIMARY KEY(codeProjetTest),
-								 codeJeux		int	NOT NULL
+								 codeJeu		int	NOT NULL
 								);
 GO 
 

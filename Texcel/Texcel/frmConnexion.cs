@@ -19,6 +19,7 @@ namespace Texcel
             InitializeComponent();
         }
 
+        //Permet à un utilisateur de se connecter.
         private void btnConnecter_Click(object sender, EventArgs e)
         {
             frmAdministrateur admin = new frmAdministrateur();
@@ -38,6 +39,12 @@ namespace Texcel
             {
                 MessageBox.Show("Le matricule ou le mot de passe est incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        //Ferme l'application lorsque le formulaire se ferme.
+        private void frmConnexion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

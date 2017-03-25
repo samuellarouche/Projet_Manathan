@@ -9,6 +9,7 @@ namespace Texcel
     class OSController : Controller
     {
         List<OS> listOS = new List<OS>();
+        OS os;
 
         public OSController() : base()
         {
@@ -16,18 +17,18 @@ namespace Texcel
         }
 
         //Permet de créer un OS dans la BD.
-        public override void Insert(params object[] champs)
+        public override void Insert(object item)
         {
-            Provider.ExecuterCommande("INSERT INTO vueOS (nom, versionOS, codeOS, edition) VALUES(@0, @1, @2, @3);", champs[0], champs[1], champs[2], champs[3]);
+            os = (OS)item;
 
-            listOS.Add(new OS(champs[0].ToString(), champs[1].ToString(), champs[2].ToString(), champs[3].ToString()));
+            Provider.ExecuterCommande("INSERT INTO vueOS (nom, versionOS, codeOS, edition) VALUES(@0, @1, @2, @3);", os.Nom, os.Version, os.Code, os.Edition);
+
+            listOS.Add(os);
         }
 
         //Permet de récupérer tous les OS de la BD.
         public override void Select(string where)
         {
-            OS os;
-
             listOS.Clear();
             foreach (object[] selection in Provider.CommandeLecture("SELECT * FROM vueOS " + where))
             {
@@ -36,9 +37,12 @@ namespace Texcel
             }
         }
 
+        //Supprime un OS de la BD et de la liste.
         public override void Delete(string codeOS)
         {
             Provider.ExecuterCommande("DELETE FROM vueOS WHERE codeOS = '" + codeOS + "'");
+
+            //ListOS.RemoveAt(index);
         }
 
         public List<OS> ListOS

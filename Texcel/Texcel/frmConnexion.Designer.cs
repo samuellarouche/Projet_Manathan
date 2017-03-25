@@ -53,7 +53,7 @@
             // txtNomUtilisateur
             // 
             this.txtNomUtilisateur.Location = new System.Drawing.Point(27, 53);
-            this.txtNomUtilisateur.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNomUtilisateur.Margin = new System.Windows.Forms.Padding(2);
             this.txtNomUtilisateur.Name = "txtNomUtilisateur";
             this.txtNomUtilisateur.Size = new System.Drawing.Size(195, 20);
             this.txtNomUtilisateur.TabIndex = 1;
@@ -61,7 +61,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(27, 121);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(195, 20);
@@ -71,7 +71,7 @@
             // 
             this.btnConnecter.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnConnecter.Location = new System.Drawing.Point(171, 261);
-            this.btnConnecter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConnecter.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnecter.Name = "btnConnecter";
             this.btnConnecter.Size = new System.Drawing.Size(95, 19);
             this.btnConnecter.TabIndex = 3;
@@ -107,9 +107,9 @@
             this.grpIdentification.Controls.Add(this.txtPassword);
             this.grpIdentification.Controls.Add(this.label2);
             this.grpIdentification.Location = new System.Drawing.Point(92, 60);
-            this.grpIdentification.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpIdentification.Margin = new System.Windows.Forms.Padding(2);
             this.grpIdentification.Name = "grpIdentification";
-            this.grpIdentification.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpIdentification.Padding = new System.Windows.Forms.Padding(2);
             this.grpIdentification.Size = new System.Drawing.Size(250, 175);
             this.grpIdentification.TabIndex = 6;
             this.grpIdentification.TabStop = false;
@@ -126,9 +126,11 @@
             this.Controls.Add(this.btnConnecter);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "frmConnexion";
             this.Text = "Connexion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConnexion_FormClosing);
             this.grpIdentification.ResumeLayout(false);
             this.grpIdentification.PerformLayout();
             this.ResumeLayout(false);

@@ -32,6 +32,7 @@ namespace Texcel
             lstTheme.Items.AddRange(themeControl.ListTheme.ToArray());
             lstGenre.Items.AddRange(genreControl.ListGenre.ToArray());
             lstClassification.Items.AddRange(classificationControl.ListClassification.ToArray());
+            lstJeux.Items.AddRange(jeuControl.ListJeu.ToArray());
         }
 
         private void btnSupprimer_Click(object sender, EventArgs e)
@@ -52,18 +53,18 @@ namespace Texcel
                     else if (radPlateforme.Checked)
                         plateformeControl.Delete(primaryKey);
                     else if (radJeu.Checked)                   
-                        jeuControl.Delete(primaryKey);                    
+                        jeuControl.Delete(primaryKey);                                                                                  
                     else
                         employeControl.Delete(primaryKey);
-                    
-                    listView1.Items.RemoveAt(listView1.SelectedItems[0].Index);
 
+                    listView1.Items.RemoveAt(listView1.SelectedItems[0].Index);
+                    
                     MessageBox.Show("L'élément '" + primaryKey + "' a bien été supprimer.", "Élément supprimer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }        
             }
             else
                 MessageBox.Show("Veuillez sélectionner un élément à supprimer.", "Aucune sélection", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        }       
 
         //Ajoute un élément selon la catégorie d'ajout sélectionnée.
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -77,9 +78,7 @@ namespace Texcel
                     {
                         try
                         {
-                            OSControl.Insert(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text);
-                            lstOS.Items.Add(OSControl.ListOS.Last());
-                            ViderChamp(grpOS);
+                            Insert(OSControl, lstOS, grpOS, new OS(txtNomOs.Text, txtVersionOS.Text, txtCodeOS.Text, txtEditionOS.Text));
                         }
                         catch
                         {
@@ -92,9 +91,7 @@ namespace Texcel
                     {
                         try
                         {
-                            plateformeControl.Insert(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, lstOS.SelectedItem);
-                            lstPlateforme.Items.Add(plateformeControl.ListPlateforme.Last());
-                            ViderChamp(grpPlateforme);
+                            Insert(plateformeControl, lstPlateforme, grpPlateforme, new Plateforme(txtNomPlateforme.Text, txtConfigPlateforme.Text, txtTypePlateforme.Text, (lstOS.SelectedItem as OS).Code));
                         }
                         catch
                         {
@@ -106,8 +103,14 @@ namespace Texcel
                     if(ValiderTout(grpJeu))
                         try
                         {
-                            jeuControl.Insert(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, lstPlateforme.SelectedItem, lstClassification.SelectedItem, lstGenre.SelectedItem, lstTheme.SelectedItem);
-                            ViderChamp(grpJeu);
+                            Jeu jeu = (Jeu)lstJeux.SelectedItem;
+                            string nomJeu = "";
+
+                            if (jeu != null)
+                                nomJeu = jeu.Nom;
+
+                            Insert(jeuControl, lstJeux, grpJeu, new Jeu(txtNomJeu.Text, txtDeveloppeur.Text, txtDescJeu.Text, txtConfigMin.Text, (lstPlateforme.SelectedItem as Plateforme).Nom, 
+                                (lstClassification.SelectedItem as Classification).Nom, (lstGenre.SelectedItem as Genre).Nom, (lstTheme.SelectedItem as Theme).Nom, nomJeu));//Bug null exception
                         }
                         catch
                         {
@@ -118,9 +121,8 @@ namespace Texcel
                     if(ValiderTout(grpEmploye))
                         try
                         {
-                            employeControl.Insert(txtMatricule.Text, txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date, txtAdresse.Text, txtTelResidentiel.Text,
-                                txtPosteTel.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text);
-                            ViderChamp(grpEmploye);
+                            Insert(employeControl, null, grpEmploye, new Employe(txtNomEmploye.Text, txtPrenomEmploye.Text, dtpNaissance.Value.Date.ToString(), txtAdresse.Text, txtTelResidentiel.Text,
+                                txtPosteTel.Text, txtMatricule.Text, (string)lstCatEmploi.SelectedItem, txtMotPasse.Text));
                         }
                         catch
                         {
@@ -128,32 +130,18 @@ namespace Texcel
                         }
                     break;
                 case "Thème":
-                    if(ValiderTout(grpThemeGenreClass))
-                    {
-                        themeControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
-                        lstTheme.Items.Add(themeControl.ListTheme.Last());
-                        ViderChamp(grpThemeGenreClass);
-                    }                    
+                    if(ValiderTout(grpThemeGenreClass))                   
+                        Insert(themeControl, lstTheme, grpThemeGenreClass, new Theme(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text));                                      
                     break;
                 case "Genre":
-                    if (ValiderTout(grpThemeGenreClass))
-                    {
-                        genreControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
-                        lstGenre.Items.Add(genreControl.ListGenre.Last());
-                        ViderChamp(grpThemeGenreClass);
-                    }                  
+                    if (ValiderTout(grpThemeGenreClass))                    
+                        Insert(genreControl, lstGenre, grpThemeGenreClass, new Genre(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text));                                     
                     break;
                 case "Classification":
-                    if (ValiderTout(grpThemeGenreClass))
-                    {
-                        classificationControl.Insert(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text);
-                        lstClassification.Items.Add(classificationControl.ListClassification.Last());
-                        ViderChamp(grpThemeGenreClass);
-                    }                    
+                    if (ValiderTout(grpThemeGenreClass))                    
+                        Insert(classificationControl, lstClassification, grpThemeGenreClass, new Classification(txtNomThemeGenreClass.Text, txtDescThemeGenreClass.Text));
                     break;
-            }
-
-            
+            }        
         }
 
         //Recherche les éléments dans la BD et les affiche dans la ListView.
@@ -233,9 +221,11 @@ namespace Texcel
                         jeu.Developpeur,
                         jeu.Description,
                         jeu.ConfigMin,
+                        jeu.NomPlateforme,
                         jeu.CodeClassification,
                         jeu.CodeGenre,
-                        jeu.CodeTheme
+                        jeu.CodeTheme,
+                        jeu.NomJeuAssocie
                     }
                     ));
                 }
@@ -263,6 +253,19 @@ namespace Texcel
 
 
 
+        //Ajoute un élément dans la BD ainsi que dans une liste d'éléments. Les champs sont ensuite vidés.
+        private void Insert(Controller controller, ComboBox list, GroupBox grpBox, object champs)
+        {
+            controller.Insert(champs);
+
+            if(list != null)
+                list.Items.Add(champs);
+
+            ViderChamp(grpBox);
+
+            MessageBox.Show("L'élément a bien été ajouté.", "Ajout d'élément", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         //Change les colonnes du ListView selon le RadioButton coché.
         private void rad_CheckedChanged(object sender, EventArgs e)
         {
@@ -279,7 +282,7 @@ namespace Texcel
                     listView1.Columns.AddRange(new ColumnHeader[] { colNom, colConfiguration, colTypeConfig, colCodeOS });
                     break;
                 case "radJeu":
-                    listView1.Columns.AddRange(new ColumnHeader[] { colNom, colDeveloppeur, colDescription, colConfigMin, colGenre, colClassification, colTheme });
+                    listView1.Columns.AddRange(new ColumnHeader[] { colNom, colDeveloppeur, colDescription, colConfigMin, colPlateforme, colGenre, colClassification, colTheme, colNomJeuAssocie});
                     break;
                 case "radEmploye":
                     listView1.Columns.AddRange(new ColumnHeader[] { colMatricule, colPrenom, colNom, colDdn, colAdresse, colTelResidentiel, colPosteTel, colTitreEmploi });
@@ -403,6 +406,8 @@ namespace Texcel
                         if (!validation.VerifierPosteTel(txtPosteTel.Text))
                             valide = false;
                         break;
+                    case "lstJeux": valide = true;
+                        break;
                     default:
                         if (!validation.VerifierChampsCommun(champ.Text))
                             valide = false;
@@ -412,8 +417,6 @@ namespace Texcel
 
             if (!valide)
                 MessageBox.Show("Veuillez remplir tous les champs correctement.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("L'élément a bien été ajouté!", "Élément ajouté", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return valide;
         }
@@ -434,6 +437,15 @@ namespace Texcel
         private void frmAdministrateur_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        //Retourne au menu de connexion.
+        private void btnDeconnexion_Click(object sender, EventArgs e)
+        {
+            frmConnexion connexion = new frmConnexion();
+
+            this.Hide();
+            connexion.Show();
         }
     }
 }

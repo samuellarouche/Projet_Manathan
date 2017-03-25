@@ -17,10 +17,10 @@ GO
 INSERT dbo.tblPlateforme (nom, configuration, typeConfiguration,codeOS) VALUES ('nom','config','typeconfig','codeOS')
 GO
 -- Insertion dans tblJeux
-INSERT dbo.tblJeux (nom, developpeur, descriptionJeu, configMin, codeclassification, codeGenre, codeTheme) VALUES ('nom','dev','desc','configmin', '1', '1', '1')
+INSERT dbo.tblJeu (nom, developpeur, descriptionJeu, configMin, codeclassification, codeGenre, codeTheme) VALUES ('nom','dev','desc','configmin', '1', '1', '1')
 GO
 -- Insertion dans tblProjetTest
-INSERT dbo.tblProjetTest (codeJeux) VALUES ('1')
+INSERT dbo.tblProjetTest (codeJeu) VALUES ('1')
 GO
 -- Insertion dans tblTypeTests
 INSERT dbo.tblTypeTests (categorie, descriptionCategorie) VALUES ('cat','desCat')

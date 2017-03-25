@@ -23,7 +23,7 @@ namespace Texcel
             InsertionListEmploye();
         }
 
-        //Insère les employés dans les listes.
+        //Insère les employés dans toutes les listes d'employés.
         private void InsertionListEmploye()
         {
             for (int i = 1; i < 6; i++)

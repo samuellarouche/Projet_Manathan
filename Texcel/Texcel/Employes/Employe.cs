@@ -8,9 +8,9 @@ namespace Texcel
 {
     class Employe
     {
-        string nom, prenom, dateNaissance, adresse, telResidentiel, matricule, categorieEmploi, posteTelephonique;
+        string nom, prenom, dateNaissance, adresse, telResidentiel, matricule, categorieEmploi, posteTelephonique, motPasse;
 
-        public Employe(string nom, string prenom, string dateNaissance, string adresse, string telResidentiel, string posteTelephonique, string matricule, string categorieEmploi)
+        public Employe(string nom, string prenom, string dateNaissance, string adresse, string telResidentiel, string posteTelephonique, string matricule, string categorieEmploi, string motPasse)
         {
             this.nom = nom;
             this.prenom = prenom;
@@ -20,6 +20,7 @@ namespace Texcel
             this.matricule = matricule;
             this.categorieEmploi = categorieEmploi;
             this.posteTelephonique = posteTelephonique;
+            this.motPasse = motPasse;
         }
 
         public string Adresse
@@ -62,9 +63,14 @@ namespace Texcel
             get { return posteTelephonique; }
         }
 
+        public string MotPasse
+        {
+            get { return motPasse; }
+        }
+
         public override string ToString()
         {
-            return nom;
+            return prenom + " - " + matricule;
         }
     }
 }

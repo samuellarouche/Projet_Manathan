@@ -8,13 +8,13 @@ namespace Texcel
 {
     class Equipe
     {
-        string matricule, nomEquipe, tache;
+        string matricule, nomEquipe, projetTest;
 
-        public Equipe(string matricule, string nomEquipe, string tache)
+        public Equipe(string matricule, string nomEquipe, string projetTest)
         {
             this.matricule = matricule;
             this.nomEquipe = nomEquipe;
-            this.tache = tache;
+            this.projetTest = projetTest;
         }
 
         public string Matricule
@@ -27,9 +27,9 @@ namespace Texcel
             get { return nomEquipe; }
         }
 
-        public string Tache
+        public string ProjetTest
         {
-            get { return tache; }
+            get { return projetTest; }
         }
     }
 }
