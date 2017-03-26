@@ -5,11 +5,7 @@ IF EXISTS (SELECT * FROM sys.databases WHERE name = 'BD_Texcel_SAM_FRAN')
 DROP DATABASE BD_Texcel_SAM_FRAN
 
 GO
-CREATE DATABASE BD_Texcel_SAM_FRAN/*ON PRIMARY
-(NAME = 'BD_Texcel_SAM_FRAN_ppal', FILENAME = 'c:\BD\BD_Texcel_SAM_FRAN_ppal.mdf', SIZE = 10MB, MAXSIZE = UNLIMITED, FILEGROWTH = 1MB)
-LOG ON
-(NAME = 'BD_Texcel_SAM_FRAN_log', FILENAME = 'c:\BD\BD_Texcel_SAM_FRAN_log.ldf', SIZE = 5MB, MAXSIZE = 25MB, FILEGROWTH = 10%)
-GO*/
+CREATE DATABASE BD_Texcel_SAM_FRAN
 
 
 /*-- Création des tables concernant les employées*/
@@ -264,4 +260,5 @@ CREATE TABLE tblClassification			(
 										 descriptionClassification	varchar(50)		NULL,
 										 tagClassification		varchar(150)		NULL
 										);
-GO 
+
+										
