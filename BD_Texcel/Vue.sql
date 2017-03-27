@@ -23,7 +23,6 @@ SELECT codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassi
 CONCAT(codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme, nomJeuAssocie) AS tagJeu
 FROM vueJeu
 
-
 IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vuePlateforme') IS NOT NULL
 DROP VIEW vuePlateforme
 GO
@@ -36,7 +35,6 @@ SELECT nom, configuration, typeConfiguration, codePlateforme, codeOS, tagPlatefo
 CONCAT(nom, configuration, typeConfiguration, codePlateforme, codeOS, tagPlateforme) AS tagPlateforme
 FROM vuePlateforme
 
-
 IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueOS') IS NOT NULL
 DROP VIEW vueOS
 GO
@@ -48,7 +46,6 @@ GO
 SELECT nom, versionOS, codeOS, edition,
 CONCAT(nom, versionOS, codeOS, edition) AS tagOS
 FROM vueOS
-
 
 IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueEmploye') IS NOT NULL
 DROP VIEW vueEmploye
@@ -101,18 +98,26 @@ SELECT nomTheme, descriptionTheme,
 CONCAT(nomTheme, descriptionTheme) AS tagTheme
 FROM vueTheme
 
-
 IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueEquipe') IS NOT NULL
 DROP VIEW vueEquipe
 GO
 CREATE VIEW vueEquipe AS
-SELECT E.codeEquipe, nomEquipe, EM.matricule AS Employe1, EM.matricule AS Employe2, EM.matricule AS Employe3, EM.matricule AS Employe4, EM.matricule AS Employe5
+SELECT E.codeEquipe, nomEquipe, T.nom AS nomTest, EM.matricule AS Employe1, EM.matricule AS Employe2, EM.matricule AS Employe3, EM.matricule AS Employe4, EM.matricule AS Employe5
 FROM tblEquipe AS E
 JOIN tblEquipeEmploye AS EE
 ON E.codeEquipe = EE.codeEquipe
 JOIN tblEmploye AS EM
 ON EE.matricule = EM.matricule
+JOIN tblEquipeTest AS ET
+ON ET.codeEquipe = E.codeEquipe
+JOIN tblTest AS T
+ON T.codeTest = ET.codeTest
 GO
 
-SELECT *
-FROM vueEquipe
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueTest') IS NOT NULL
+DROP VIEW vueTest
+GO
+CREATE VIEW vueTest AS
+SELECT nom, descriptionTest, codeType
+FROM tblTest
+GO

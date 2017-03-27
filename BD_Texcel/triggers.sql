@@ -94,15 +94,32 @@ BEGIN
 					@matricule3 AS varchar(200),
 					@matricule4 AS varchar(200),
 					@matricule5 AS varchar(200),
-					@i AS int = 1;
+					@nomTest AS varchar(50),
+					@codeTest AS int
 
-			SELECT @nomEquipe = nomEquipe, @codeEquipe = codeEquipe, @matricule1 = Employe1, @matricule2 = Employe2, @matricule3 = Employe3, @matricule4 = Employe4, @matricule5 = Employe5
+			-- Récupère les données insérées.
+			SELECT @nomEquipe = nomEquipe, @nomTest = nomTest, @matricule1 = Employe1, @matricule2 = Employe2, @matricule3 = Employe3, @matricule4 = Employe4, @matricule5 = Employe5
 			FROM inserted;
+
+			-- Insère l'équipe dans la table équipe.
 			INSERT INTO tblEquipe (nomEquipe) VALUES (@nomEquipe)
+
+			-- Récupère les codes (équipe et test) selon les noms insérés.
+			SELECT @codeEquipe = codeEquipe
+			FROM tblEquipe
+			WHERE nomEquipe = @nomEquipe
+
+			SELECT @codeTest = codeTest
+			FROM tblTest
+			WHERE nom = @nomTest
+
+			-- Insère les valeurs dans les tables d'intersections.
 			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule1) 
 			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule2) 
 			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule3) 
 			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule4) 
 			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule5) 
+
+			INSERT INTO tblEquipeTest (codeEquipe, codeTest) VALUES (@codeEquipe, @codeTest)
 END
 GO
