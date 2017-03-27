@@ -2,22 +2,22 @@ USE BD_Texcel_SAM_FRAN
 GO
 
 -- Insertion dans tblClassification
-INSERT dbo.tblClassification (nomClassification, descriptionClassification) VALUES ('secret','top secret')
+INSERT dbo.tblClassification (nomClassification, descriptionClassification) VALUES ('Secret','Top secret')
 GO
 -- Insertion dans tblGenre
 INSERT dbo.tblGenre (nomGenre, descriptionGenre) VALUES ('Masculin','épais')
 GO
 -- Insertion dans tblTheme
-INSERT dbo.tblTheme (nomTheme, descriptionTheme) VALUES ('jurassic park','park de jurassique')
+INSERT dbo.tblTheme (nomTheme, descriptionTheme) VALUES ('Jurassic park','Park de jurassique')
 GO
 -- Insertion dans tblOS
-INSERT dbo.tblOS (nom, versionOS, codeOS, edition) VALUES ('Android','6.0.1','SAM2TT','limité')
+INSERT dbo.tblOS (nom, versionOS, codeOS, edition) VALUES ('Android','6.0.1','SAM2TT','Limité')
 GO
 -- Insertion dans tblPlateforme
 INSERT dbo.tblPlateforme (nom, configuration, typeConfiguration,codeOS) VALUES ('Samsung','2T','très grande place','SAM2TT')
 GO
 -- Insertion dans tblJeu
-INSERT dbo.tblJeu (nom, developpeur, descriptionJeu, configMin, codeclassification, codeGenre, codeTheme, codeJeuAssocie, nomJeuAssocie) VALUES ('Game of Thumbs','Totema','fight de pouce epic','un ami et un pouce', '1', '1', '1', NULL, NULL)
+INSERT dbo.vueJeu (nom, developpeur, descriptionJeu, configMin, nomClassification, nomGenre, nomTheme, nomJeuAssocie) VALUES ('Game of Thumbs','Totema','fight de pouce epic','un ami et un pouce', 'Masculin', 'Jurassic park', '1', '')
 GO
 -- Insertion dans tblProjetTest
 INSERT dbo.tblProjetTest (codeJeu) VALUES ('1')
