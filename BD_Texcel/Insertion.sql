@@ -17,7 +17,7 @@ GO
 INSERT dbo.tblPlateforme (nom, configuration, typeConfiguration,codeOS) VALUES ('Samsung','2T','très grande place','SAM2TT')
 GO
 -- Insertion dans tblJeu
-INSERT dbo.vueJeu (nom, developpeur, descriptionJeu, configMin, nomClassification, nomGenre, nomTheme, nomJeuAssocie) VALUES ('Game of Thumbs','Totema','fight de pouce epic','un ami et un pouce', 'Masculin', 'Jurassic park', '1', '')
+INSERT dbo.vueJeu (nom, developpeur, descriptionJeu, configMin, nomPlateforme, nomClassification, nomGenre, nomTheme, nomJeuAssocie) VALUES ('Game of Thumbs','Totema','fight de pouce epic','un ami et un pouce', 'Samsung', 'Secret', 'Masculin', 'Jurassic park', null)
 GO
 -- Insertion dans tblProjetTest
 INSERT dbo.tblProjetTest (codeJeu) VALUES ('1')
@@ -39,6 +39,5 @@ INSERT dbo.tblEmploye (matricule, nom, prenom, dateNaissance, adresse, telReside
 GO
 INSERT dbo.tblEmploye (matricule, nom, prenom, dateNaissance, adresse, telResidentiel, posteTelephonique, titreEmploye, motPasse) VALUES ('directeur4','King','Mr','2005-04-8','1800 directeur avenue','1-800-DIRECTEUR','DIREC','Directeur','directeur')
 GO
--- Insertion dans tblEquipe
-INSERT dbo.tblEquipe (nomEquipe) VALUES ('Admin et Directeur')
-GO
+
+INSERT INTO vueEquipe (nomEquipe, nomTest, Employe1, Employe2, Employe3, Employe4, Employe5) VALUES ('Test', 'mur', 'admin', 'directeur1', 'directeur2', 'directeur3', 'directeur4')

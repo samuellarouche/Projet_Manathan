@@ -10,7 +10,7 @@ namespace Texcel
     {
 		string matricule1, matricule2, matricule3, matricule4, matricule5, nomEquipe, nomTest;
 
-        public Equipe(string matricule1, string matricule2, string matricule3, string matricule4, string matricule5, string nomEquipe, string nomTest)
+        public Equipe(string nomEquipe, string nomTest, string matricule1, string matricule2, string matricule3, string matricule4, string matricule5)
         {
 
             this.matricule1 = matricule1;

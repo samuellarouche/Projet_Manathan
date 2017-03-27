@@ -14,6 +14,7 @@ namespace Texcel
     {
         EmployeController employeControl = new EmployeController();
 		EquipeController equipeControl = new EquipeController();
+        TestController testControl = new TestController();
 
         public frmDirecteur()
         {
@@ -21,7 +22,9 @@ namespace Texcel
             tabAjout.Dispose();
             radEmploye.Dispose();
             btnSupprimer.Dispose();
+
             InsertionListEmploye();
+            lstTest.Items.AddRange(testControl.ListTest.ToArray());
         }
 
         //Insère les employés dans toutes les listes d'employés.

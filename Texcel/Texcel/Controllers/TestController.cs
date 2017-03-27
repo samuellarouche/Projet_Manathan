@@ -26,7 +26,7 @@ namespace Texcel
 			foreach (object[] testSelectionne in Provider.CommandeLecture("SELECT * FROM vueTest " + where))
 			{
 				Test test;
-				test = new Test(testSelectionne[1].ToString(), testSelectionne[2].ToString(), Convert.ToInt32(testSelectionne[3]));
+				test = new Test(testSelectionne[0].ToString(), testSelectionne[1].ToString(), Convert.ToInt32(testSelectionne[2]));
 
 				lstTest.Add(test);
 			}
