@@ -77,3 +77,32 @@ BEGIN
 	INSERT INTO tblPlateformeJeu VALUES (@codePlateforme, @codeJeu)
 END
 GO
+
+-- -------------------------------------------------------------------------------------------------------------------------
+-- Un trigger permettant d'insérer les informations dans la table d'intersection tblEquipeEmploye lors de l'ajout d'une équipe.
+-- -------------------------------------------------------------------------------------------------------------------------
+IF OBJECT_ID('trigger_InsertEquipeIntersection') IS NOT NULL
+DROP TRIGGER trigger_InsertEquipeIntersection
+GO
+CREATE TRIGGER trigger_InsertEquipeIntersection ON vueEquipe INSTEAD OF INSERT AS
+BEGIN
+			DECLARE @nomEquipe AS varchar(50),
+					@codeEquipe AS int,
+					@matricule AS varchar(200),
+					@matricule1 AS varchar(200),
+					@matricule2 AS varchar(200),
+					@matricule3 AS varchar(200),
+					@matricule4 AS varchar(200),
+					@matricule5 AS varchar(200),
+					@i AS int = 1;
+
+			SELECT @nomEquipe = nomEquipe, @codeEquipe = codeEquipe, @matricule1 = Employe1, @matricule2 = Employe2, @matricule3 = Employe3, @matricule4 = Employe4, @matricule5 = Employe5
+			FROM inserted;
+			INSERT INTO tblEquipe (nomEquipe) VALUES (@nomEquipe)
+			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule1) 
+			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule2) 
+			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule3) 
+			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule4) 
+			INSERT INTO tblEquipeEmploye (codeEquipe, matricule) VALUES (@codeEquipe, @matricule5) 
+END
+GO

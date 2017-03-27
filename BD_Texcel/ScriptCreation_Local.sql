@@ -45,8 +45,21 @@ DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEquipe
 CREATE TABLE tblEquipe		(codeEquipe int IDENTITY(1,1)	NOT NULL,
 							 PRIMARY KEY(codeEquipe),
 							 nomEquipe  varchar(50)			NOT NULL,
-							 matricule	varchar(200)		NULL
 							);
+GO
+
+PRINT('Création de la table tblEquipeEmploye')
+-- ----------------------------------------------------------
+USE BD_Texcel_SAM_FRAN
+GO
+
+IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.tblEquipeEmploye') IS NOT NULL
+DROP TABLE BD_Texcel_SAM_FRAN.dbo.tblEquipeEmploye
+
+CREATE TABLE tblEquipeEmploye		(codeEquipe	 int	NOT NULL,
+									 matricule	 varchar(200)	NOT NULL,
+									 PRIMARY KEY(codeEquipe, matricule)
+									 );
 GO
 
 PRINT('Création de la table tblEquipeTest')
@@ -261,4 +274,10 @@ CREATE TABLE tblClassification			(
 										 tagClassification		varchar(150)		NULL
 										);
 
-										
+--use master
+
+--alter database BD_Texcel_SAM_FRAN set single_user with rollback immediate
+
+--restore database BD_Texcel_SAM_FRAN 
+
+--alter database BD_Texcel_SAM_FRAN set multi_user

@@ -1,8 +1,6 @@
 USE BD_Texcel_SAM_FRAN
 GO
 
-ALTER TABLE tblEquipe ADD CONSTRAINT fk_matricule FOREIGN KEY (matricule) REFERENCES tblEmploye (matricule) ON DELETE CASCADE
-
 ALTER TABLE tblTest ADD CONSTRAINT fk_codeType FOREIGN KEY (codeType) REFERENCES tblTypeTests (codeType) ON DELETE CASCADE
 
 ALTER TABLE tblEquipeTest ADD CONSTRAINT fk_codeEquipe FOREIGN KEY (codeEquipe) REFERENCES tblEquipe (codeEquipe) ON DELETE CASCADE
@@ -28,3 +26,7 @@ ALTER TABLE tblPlateformeJeu ADD CONSTRAINT fk_codePlateforme FOREIGN KEY (codeP
 ALTER TABLE tblPlateformeJeu ADD CONSTRAINT fk_codeJeuxPlateforme FOREIGN KEY (codeJeu) REFERENCES tblJeu (codeJeu) ON DELETE CASCADE
   
 ALTER TABLE tblPlateforme ADD CONSTRAINT fk_codeOS FOREIGN KEY (codeOS) REFERENCES tblOS (codeOS) ON DELETE CASCADE
+
+ALTER TABLE tblEquipeEmploye ADD CONSTRAINT fk_matriculeEmp FOREIGN KEY (matricule) REFERENCES tblemploye (matricule) ON DELETE CASCADE
+
+ALTER TABLE tblEquipeEmploye ADD CONSTRAINT fk_codEquipeEmp FOREIGN KEY (codeEquipe) REFERENCES tblEquipe (codeEquipe) ON DELETE CASCADE

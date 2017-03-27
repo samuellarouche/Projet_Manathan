@@ -5,7 +5,7 @@ IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueJeu') IS NOT NULL
 DROP VIEW vueJeu
 GO
 CREATE VIEW vueJeu AS
-SELECT J.codeJeu, J.nom, developpeur, descriptionJeu, configMin, P.nom AS nomPlateforme, nomGenre, nomClassification, nomTheme, nomJeuAssocie
+SELECT J.codeJeu, J.nom, developpeur, descriptionJeu, configMin, P.nom AS nomPlateforme, nomGenre, nomClassification, nomTheme,codeJeuAssocie, nomJeuAssocie
 FROM tblJeu AS J
 JOIN tblGenre AS G
 ON J.codeGenre=G.codeGenre
@@ -19,8 +19,8 @@ JOIN tblPlateforme AS P
 ON P.codePlateforme = PJ.codePlateforme
 GO
 
-SELECT codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme,
-CONCAT(codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme) AS tagJeux
+SELECT codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme, nomJeuAssocie,
+CONCAT(codeJeu, nom, developpeur, descriptionJeu, configMin, nomGenre, nomClassification, nomTheme, nomJeuAssocie) AS tagJeu
 FROM vueJeu
 
 
@@ -106,6 +106,13 @@ IF OBJECT_ID('BD_Texcel_SAM_FRAN.dbo.vueEquipe') IS NOT NULL
 DROP VIEW vueEquipe
 GO
 CREATE VIEW vueEquipe AS
-SELECT *
-FROM tblEquipe
+SELECT E.codeEquipe, nomEquipe, EM.matricule AS Employe1, EM.matricule AS Employe2, EM.matricule AS Employe3, EM.matricule AS Employe4, EM.matricule AS Employe5
+FROM tblEquipe AS E
+JOIN tblEquipeEmploye AS EE
+ON E.codeEquipe = EE.codeEquipe
+JOIN tblEmploye AS EM
+ON EE.matricule = EM.matricule
 GO
+
+SELECT *
+FROM vueEquipe

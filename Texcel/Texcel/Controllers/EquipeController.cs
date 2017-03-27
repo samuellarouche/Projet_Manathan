@@ -27,7 +27,7 @@ namespace Texcel
 
         public override void Insert(object item)
         {
-            throw new NotImplementedException();
+            Provider.ExecuterCommande("INSERT INTO vueEquipe (nomEquipe, Employe1, Employe2, Employe3, Employe4, Employe5) VALUES ()")
         }
 
         public override void Select(string where)
