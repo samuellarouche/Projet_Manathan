@@ -1,4 +1,10 @@
-﻿using System;
+﻿//Francis Poirier et Samuel Larouche
+//
+//Programme qui simule la gestion de projets de tests
+//et d'employés à l'aide d'une BD.
+//
+//26/03/2017
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

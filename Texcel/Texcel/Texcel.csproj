@@ -60,7 +60,6 @@
     <Compile Include="frmDirecteur.Designer.cs">
       <DependentUpon>frmDirecteur.cs</DependentUpon>
     </Compile>
-    <Compile Include="IController.cs" />
     <Compile Include="Jeux\Classification.cs" />
     <Compile Include="dbProvider.cs" />
     <Compile Include="Employes\Directeur.cs" />

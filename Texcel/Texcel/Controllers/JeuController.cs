@@ -34,7 +34,7 @@ namespace Texcel
             foreach(object[] jeuSelectionne in Provider.CommandeLecture("SELECT * FROM vueJeu " + where))
             {
                 jeu = new Jeu(jeuSelectionne[1].ToString(), jeuSelectionne[2].ToString(), jeuSelectionne[3].ToString(), jeuSelectionne[4].ToString(),
-                    jeuSelectionne[5].ToString(), jeuSelectionne[6].ToString(), jeuSelectionne[7].ToString(), jeuSelectionne[8].ToString(), jeuSelectionne[9].ToString());
+                    jeuSelectionne[5].ToString(), jeuSelectionne[6].ToString(), jeuSelectionne[7].ToString(), jeuSelectionne[8].ToString(), jeuSelectionne[10].ToString());
 
                 listJeu.Add(jeu);
             }

@@ -43,9 +43,18 @@ namespace Texcel
 		{
             if (ValiderTout(grpEquipe))
             {
-                equipeControl.Insert(new Equipe(txtNomEquipe.Text, (lstTest.SelectedItem as Test).Nom, (lstEmploye1.SelectedItem as Employe).Matricule,
+                try
+                {
+                    equipeControl.Insert(new Equipe(txtNomEquipe.Text, (lstTest.SelectedItem as Test).Nom, (lstEmploye1.SelectedItem as Employe).Matricule,
                     (lstEmploye2.SelectedItem as Employe).Matricule, (lstEmploye3.SelectedItem as Employe).Matricule, (lstEmploye4.SelectedItem as Employe).Matricule,
                     (lstEmploye5.SelectedItem as Employe).Matricule));
+
+                    MessageBox.Show("L'équipe a bien été créée.", "Équipe créée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Impossible de créer l'équipe avec plusieurs fois le même employé.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }			
 		}
 	}
