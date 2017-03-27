@@ -13,6 +13,7 @@ namespace Texcel
     public partial class frmDirecteur : frmAdministrateur
     {
         EmployeController employeControl = new EmployeController();
+		EquipeController equipeControl = new EquipeController();
 
         public frmDirecteur()
         {
@@ -31,5 +32,12 @@ namespace Texcel
                 (Controls.Find("lstEmploye" + i, true)[0] as ComboBox).Items.AddRange(employeControl.ListEmploye.ToArray());
             }
         }
-    }
+
+		private void btnCreerEquipe_Click(object sender, EventArgs e)
+		{
+			equipeControl.Insert(new Equipe(txtNomEquipe.Text, (lstTest.SelectedItem as Test).Nom, (lstEmploye1.SelectedItem as Employe).Matricule, 
+			(lstEmploye2.SelectedItem as Employe).Matricule, (lstEmploye3.SelectedItem as Employe).Matricule, (lstEmploye4.SelectedItem as Employe).Matricule, 
+			(lstEmploye5.SelectedItem as Employe).Matricule));
+		}
+	}
 }

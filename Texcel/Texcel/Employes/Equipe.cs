@@ -8,28 +8,53 @@ namespace Texcel
 {
     class Equipe
     {
-        string matricule, nomEquipe, codeTest;
+		string matricule1, matricule2, matricule3, matricule4, matricule5, nomEquipe, nomTest;
 
-        public Equipe(string matricule, string nomEquipe, string codeTest)
+        public Equipe(string matricule1, string matricule2, string matricule3, string matricule4, string matricule5, string nomEquipe, string nomTest)
         {
-            this.matricule = matricule;
-            this.nomEquipe = nomEquipe;
-            this.codeTest = codeTest;
+
+            this.matricule1 = matricule1;
+			this.matricule2 = matricule2;
+			this.matricule3 = matricule3;
+			this.matricule4 = matricule4;
+			this.matricule5 = matricule5;
+			this.nomEquipe = nomEquipe;
+            this.nomTest = nomTest;
         }
 
-        public string Matricule
-        {
-            get { return matricule; }
-        }
+		public string Matricule1
+		{
+			get { return matricule1; }
+		}
 
-        public string NomEquipe
+		public string Matricule2
+		{
+			get { return matricule2; }
+		}
+
+		public string Matricule3
+		{
+			get { return matricule3; }
+		}
+
+		public string Matricule4
+		{
+			get { return matricule4; }
+		}
+
+		public string Matricule5
+		{
+			get { return matricule5; }
+		}
+
+		public string NomEquipe
         {
             get { return nomEquipe; }
         }
 
-        public string CodeTest
+        public string NomTest
         {
-            get { return codeTest; }
+            get { return nomTest; }
         }
     }
 }
