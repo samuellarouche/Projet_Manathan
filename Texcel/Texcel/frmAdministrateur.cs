@@ -35,6 +35,7 @@ namespace Texcel
             lstJeux.Items.AddRange(jeuControl.ListJeu.ToArray());
         }
 
+        //Suprimme un élément de la BD et de la ListView.
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
@@ -382,12 +383,13 @@ namespace Texcel
         }
 
         //Valide la totalité des champs.
-        private bool ValiderTout(Control groupBox)
+        protected bool ValiderTout(Control groupBox)
         {
             bool valide = true;
 
             foreach(Control champ in groupBox.Controls)
             {
+                if((champ is TextBox) || (champ is RichTextBox) || (champ is ComboBox))
                 switch (champ.Name)
                 {
                     case "txtMotPasse":

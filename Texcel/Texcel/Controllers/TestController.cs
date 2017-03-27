@@ -20,6 +20,7 @@ namespace Texcel
 			throw new NotImplementedException();
 		}
 
+        //Sélectionne tous les tests de la BD et les insère dans une liste.
 		public override void Select(string where)
 		{
 			lstTest.Clear();

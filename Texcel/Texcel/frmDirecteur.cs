@@ -16,6 +16,8 @@ namespace Texcel
 		EquipeController equipeControl = new EquipeController();
         TestController testControl = new TestController();
 
+        Validation validation = new Validation();
+
         public frmDirecteur()
         {
             InitializeComponent();
@@ -36,11 +38,15 @@ namespace Texcel
             }
         }
 
+        //Crée une équipe.
 		private void btnCreerEquipe_Click(object sender, EventArgs e)
 		{
-			equipeControl.Insert(new Equipe(txtNomEquipe.Text, (lstTest.SelectedItem as Test).Nom, (lstEmploye1.SelectedItem as Employe).Matricule, 
-			(lstEmploye2.SelectedItem as Employe).Matricule, (lstEmploye3.SelectedItem as Employe).Matricule, (lstEmploye4.SelectedItem as Employe).Matricule, 
-			(lstEmploye5.SelectedItem as Employe).Matricule));
+            if (ValiderTout(grpEquipe))
+            {
+                equipeControl.Insert(new Equipe(txtNomEquipe.Text, (lstTest.SelectedItem as Test).Nom, (lstEmploye1.SelectedItem as Employe).Matricule,
+                    (lstEmploye2.SelectedItem as Employe).Matricule, (lstEmploye3.SelectedItem as Employe).Matricule, (lstEmploye4.SelectedItem as Employe).Matricule,
+                    (lstEmploye5.SelectedItem as Employe).Matricule));
+            }			
 		}
 	}
 }

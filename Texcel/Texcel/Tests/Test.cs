@@ -32,5 +32,10 @@ namespace Texcel
 		{
 			get {return codeType; }
 		}
-	}
+
+        public override string ToString()
+        {
+            return nom;
+        }
+    }
 }
